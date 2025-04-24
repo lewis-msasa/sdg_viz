@@ -10,8 +10,8 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
 
     const width = mapContainerRef.current.clientWidth;
     const height = window.innerHeight;
-    console.log("height " + height + ", width "+ width)
     let isZoomed = false;
+    let isClicked = false;
     let clickedCountry = null;
     const svg = d3.select(mapContainerRef.current)
       .append("svg")
@@ -59,27 +59,18 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
               .attr("stroke", "#000")
               .attr("stroke-width", 1.5)
               .style("cursor", "pointer"); // Explicit pointer on hover
-              if(isZoomed == false){
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html(d.properties.NAME)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+              console.log(isClicked)
+              if(!isZoomed && !isClicked){
+                //showTooltip(d,event);
               }
             }
           })
-          .on("mouseout", function() {
-            d3.select(this)
-                    .attr("stroke", "#fff")
-                    .attr("stroke-width", 0.5)
-                    .style("cursor", "pointer"); // Maintain pointer cursor
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
+          .on("mouseout", function(event,d) {
+             hideTooltip();
           })
           .on("dblclick", function(event, d){
             if(isClickableCountry(d.properties.NAME)){
+                hideTooltip();
                 event.stopPropagation();
                         
                 if (clickedCountry === d && isZoomed) {
@@ -89,20 +80,51 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
                     // Zoom to new country
                     zoomToCountry(d);
                 }
+                //showTooltip(d,event);
            }
           })
           .on("click", function(event, d) {
             if (isClickableCountry(d.properties.NAME)) {
+              //hideTooltip();
               onCountryClick(d.properties.NAME);
               highlightCountry(this);
+              //showTooltip(d,event);
+              isClicked = true;
             }
           });
+
+
+          g.selectAll(".country-name")
+              .data(africa)
+              .enter()
+              .append("text")
+              .attr("class", "country-name")
+              .attr("transform", d => {
+               
+                const centroid = path.centroid(d);
+                return `translate(${centroid[0]}, ${centroid[1]})`;
+              })
+              .attr("text-anchor", "middle") 
+              .attr("dy", ".35em")
+              .text(d => isClickableCountry(d.properties.NAME) ? d.properties.NAME : ""); 
 
         if (selectedCountry) {
           highlightSelectedCountry();
         }
       });
-
+      function hideTooltip(){
+        tooltip.transition()
+        .duration(500)
+        .style("opacity", 0);
+      }
+      function showTooltip(d,event){
+        tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+                tooltip.html(d.properties.NAME)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+      }
       function zoomToCountry(d) {
         // Clear previous selection
        
@@ -142,6 +164,7 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
     function highlightCountry(element) {
       g.selectAll(".country").classed("clicked", false);
       d3.select(element).classed("clicked", true);
+     
     }
 
     function highlightSelectedCountry() {

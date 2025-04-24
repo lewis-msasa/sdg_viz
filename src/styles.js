@@ -1,12 +1,25 @@
 export const styles = `
   .africa-map-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 120vh;
+  }
+  .map-section {
+  
     position: relative;
-    width: 100%;
+    background: #e8f4f8;
+  }
+
+  .quiz-section {
+    min-height: 30vh;
+    padding: 2rem;
+    background: white;
+    border-top: 2px solid #457b9d;
   }
   
   .map-container {
     width: 100%;
-    height: 100vh;
+    height: 120vh;
     background: #e8f4f8;
   }
   
@@ -20,7 +33,11 @@ export const styles = `
     fill: #e63946;
     cursor: pointer;
   }
-  
+  .country-name {
+    font-size: 10px;
+    fill: white;
+    pointer-events: none; 
+  }
   .other-country {
     fill: #a8dadc;
     pointer-events: none;
@@ -34,30 +51,18 @@ export const styles = `
   }
   
   /* Quiz Card Styles */
-  .quiz-card-container {
-    position: fixed;
-    bottom: -400px;
-    left: 0;
-    right: 0;
-    background: white;
-    box-shadow: 0 -5px 25px rgba(0,0,0,0.1);
-    border-radius: 20px 20px 0 0;
-    padding: 25px;
-    max-width: 800px;
-    margin: 0 auto;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 100;
-  }
-  
-  .quiz-card-container.visible {
-    transform: translateY(-400px);
-  }
-  /*.quiz-card {
-    display: none;
-}*/
-.quiz-card.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
+  .quiz-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+.quiz-card.empty-state {
+  text-align: center;
+  color: #666;
+  padding: 3rem;
 }
 .card-header {
     display: flex;
@@ -87,9 +92,7 @@ export const styles = `
     margin-right: 10px;
 }
 .fact-item {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px dashed #a8dadc;
+   animation: fadeIn 0.3s ease-out;
 }
 .fact-question {
     font-weight: bold;

@@ -11,20 +11,25 @@ const AfricaMapQuiz = () => {
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
   const [isCardVisible, setIsCardVisible] = useState(false);
   const [isValidCountry, setIsValidCountry] = useState(false);
+  const quizCardRef = React.useRef(null);
   
   const handleCountryClick = (countryName) => {
     setSelectedCountry(countryName);
+    setCurrentFactIndex(0);
     const facts = countryFacts[countryName].facts ?? []
+    
+    if (quizCardRef.current) {
+      quizCardRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
     if(facts.length > 0){
       setIsValidCountry(true)
     }
     else{
       setIsValidCountry(false)
     }
-    setCurrentFactIndex(0);
-    setIsCardVisible(true);
-    // document.getElementById('quiz-card-container').classList.add('visible');
-    // document.getElementById('quiz-card').classList.add('active');
+    // setCurrentFactIndex(0);
+    // setIsCardVisible(true);
+  
   };
 
   const handlePrevFact = () => {
@@ -39,28 +44,30 @@ const AfricaMapQuiz = () => {
     }
   };
 
-  const closeCard = () => {
-    setIsCardVisible(false);
-  };
+  // const closeCard = () => {
+  //   setIsCardVisible(false);
+  // };
 
   return (
     <div className="africa-map-container">
-     
-      <Map 
-        clickableCountries={clickableCountries} 
-        onCountryClick={handleCountryClick}
-        selectedCountry={selectedCountry}
-      />
-      
-      <QuizCard
-        isVisible={isCardVisible}
-        country={countryFacts[selectedCountry] ? countryFacts[selectedCountry].name : ""}
-        facts={selectedCountry && isValidCountry ? countryFacts[selectedCountry].facts : []}
-        currentIndex={currentFactIndex}
-        onPrev={handlePrevFact}
-        onNext={handleNextFact}
-        onClose={closeCard}
-      />
+        <div className="map-section">
+        <Map 
+          clickableCountries={clickableCountries} 
+          onCountryClick={handleCountryClick}
+          selectedCountry={selectedCountry}
+        />
+      </div>
+      <div ref={quizCardRef} className="quiz-section"> 
+        <QuizCard
+          isVisible={isCardVisible}
+          country={countryFacts[selectedCountry] ? countryFacts[selectedCountry].name : ""}
+          facts={selectedCountry && isValidCountry ? countryFacts[selectedCountry].facts : []}
+          currentIndex={currentFactIndex}
+          onPrev={handlePrevFact}
+          onNext={handleNextFact}
+          // onClose={closeCard}
+        />
+      </div>
     </div>
   );
 };

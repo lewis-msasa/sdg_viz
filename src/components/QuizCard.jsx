@@ -9,17 +9,23 @@ const QuizCard = ({
   onNext, 
   onClose 
 }) => {
-  if (!country) return null;
+  console.log(facts)
+  if (!country) {
+    return (
+      <div className="quiz-card empty-state">
+        <h2>Select a country from the map to view facts</h2>
+      </div>
+    );
+  }
 
   const currentFact = facts[currentIndex] || [];
  
   return (
-    <div className={`quiz-card-container ${isVisible ? 'visible' : ''}`}>
-      
+  
       <div className="quiz-card">
         <div className="card-header">
           <h2 className="card-title">{country}</h2>
-          <button className="card-close" onClick={onClose}>✕</button>
+         
         </div>
         
         <div className="quiz-content">
@@ -33,7 +39,8 @@ const QuizCard = ({
             <p>No quiz facts available for {country} yet.</p>
           )}
         </div>
-        
+
+        {facts.length > 0 && (
         <div className="card-nav">
           <button 
             className="card-button" 
@@ -55,8 +62,10 @@ const QuizCard = ({
             Next
           </button>
         </div>
+        )}
+
       </div>
-    </div>
+  
   );
 };
 
