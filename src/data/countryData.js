@@ -5,88 +5,104 @@ export const clickableCountries = [
     "Burundi", 
     "Central African Rep."
   ];
+
+// ... existing quiz data ...
+
+export const countryInfo = {
+    "S. Sudan": {
+      capital: "Juba",
+      population: 11000000,
+      area: 644329,
+      language: "English",
+      climate: "Tropical",
+      resources: "Petroleum, hydropower, gold",
+      description: "South Sudan is the world's newest country, having gained independence from Sudan in 2011. It's rich in oil but has faced significant challenges including civil war and economic instability.",
+      imageUrl: "https://example.com/south-sudan.jpg"
+    },
+    "Mozambique": {
+      capital: "Maputo",
+      population: 31200000,
+      area: 801590,
+      language: "Portuguese",
+      climate: "Tropical to subtropical",
+      resources: "Coal, titanium, natural gas",
+      description: "Mozambique is a scenic country in Southeast Africa with a long Indian Ocean coastline. It's known for its wildlife, beaches, and the island archipelago of Bazaruto.",
+      imageUrl: "https://example.com/mozambique.jpg"
+    }
+    // Add details for other countries
+  };
+
   
   export const countryFacts = {
     "S. Sudan": {
         "name" : "South Sudan",
         "facts" : [
-      {
-        category: "Geography",
+            {
                 question: "What is the capital of South Sudan?",
-                answer: "Juba"
-            },
-            {
-                category: "History",
+                options: ["Khartoum", "Juba", "Nairobi", "Kampala"],
+                correctAnswer: 1,
+                category: "Geography"
+              },
+              {
                 question: "When did South Sudan gain independence?",
-                answer: "2011 (from Sudan)"
-            },
-            {
-                category: "Economy",
-                question: "What is South Sudan's main export?",
-                answer: "Crude oil (accounts for nearly all exports)"
-            }
-            ]
+                options: ["2005", "2011", "2015", "1999"],
+                correctAnswer: 1,
+                category: "History"
+              }
+     ]
     },
     "Mozambique":
     {
      "name" : "Mozambique",
      "facts" : [
         {
-            category: "Geography",
             question: "What ocean borders Mozambique to the east?",
-            answer: "Indian Ocean"
-        },
-        {
-            category: "Culture",
+            options: ["Atlantic", "Indian", "Pacific", "Arctic"],
+            correctAnswer: 1,
+            category: "Geography"
+          },
+          {
             question: "What is Mozambique's official language?",
-            answer: "Portuguese"
-        },
-        {
-            category: "Wildlife",
-            question: "Which national park is famous for its lion population?",
-            answer: "Gorongosa National Park"
-        }
+            options: ["English", "French", "Portuguese", "Swahili"],
+            correctAnswer: 2,
+            category: "Culture"
+          }
     ]
     },
     "Dem. Rep. Congo":{
         "name" : "Democratic Republic of Congo",
      
-        "facts" : [ {
-            category: "Geography",
-            question: "What is the second largest rainforest in the world located here?",
-            answer: "Congo Rainforest"
-        },
-        {
-            category: "Resources",
-            question: "What valuable mineral is DRC rich in?",
-            answer: "Cobalt (produces 70% of world's supply)"
-        },
-        {
-            category: "History",
-            question: "What was the country formerly called?",
-            answer: "Zaire (1971-1997)"
-        }
-    ]
+        "facts" : [ 
+            {
+                question: "What ocean borders Mozambique to the east?",
+                options: ["Atlantic", "Indian", "Pacific", "Arctic"],
+                correctAnswer: 1,
+                category: "Geography"
+              },
+              {
+                question: "What is Mozambique's official language?",
+                options: ["English", "French", "Portuguese", "Swahili"],
+                correctAnswer: 2,
+                category: "Culture"
+              }
+        ]
     },
     "Burundi":
     {
      "name" : "Burundi",
      "facts" : [
         {
-            category: "Geography",
             question: "What ocean borders Mozambique to the east?",
-            answer: "Indian Ocean"
-        },
-        {
-            category: "Culture",
+            options: ["Atlantic", "Indian", "Pacific", "Arctic"],
+            correctAnswer: 1,
+            category: "Geography"
+          },
+          {
             question: "What is Mozambique's official language?",
-            answer: "Portuguese"
-        },
-        {
-            category: "Wildlife",
-            question: "Which national park is famous for its lion population?",
-            answer: "Gorongosa National Park"
-        }
+            options: ["English", "French", "Portuguese", "Swahili"],
+            correctAnswer: 2,
+            category: "Culture"
+          }
     ]
     },
     "Central African Rep.":
@@ -94,20 +110,17 @@ export const clickableCountries = [
      "name" : "Central African Republic",
      "facts" : [
         {
-            category: "Geography",
             question: "What ocean borders Mozambique to the east?",
-            answer: "Indian Ocean"
-        },
-        {
-            category: "Culture",
+            options: ["Atlantic", "Indian", "Pacific", "Arctic"],
+            correctAnswer: 1,
+            category: "Geography"
+          },
+          {
             question: "What is Mozambique's official language?",
-            answer: "Portuguese"
-        },
-        {
-            category: "Wildlife",
-            question: "Which national park is famous for its lion population?",
-            answer: "Gorongosa National Park"
-        }
+            options: ["English", "French", "Portuguese", "Swahili"],
+            correctAnswer: 2,
+            category: "Culture"
+          }
     ]
     },
   };

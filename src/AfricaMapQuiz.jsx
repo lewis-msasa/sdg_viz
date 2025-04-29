@@ -7,17 +7,28 @@ import Map from "./components/Map"
 import QuizCard from "./components/QuizCard"
 import sdg1 from "./assets/sdg1.png"
 import sdg4 from "./assets/sdg4.png"
+import ScrollToTopButton from './components/scrollToTopButton';
+import CountryDetails from './components/CountryDetails';
+
 
 const AfricaMapQuiz = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [currentFactIndex, setCurrentFactIndex] = useState(0);
-  const [isCardVisible, setIsCardVisible] = useState(false);
+  const [showCountryDetails, setShowCountryDetails] = useState(false);
+  const [currentCountryDetails, setCurrentCountryDetails] = useState(null);
   const [isValidCountry, setIsValidCountry] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [showMap, setShowMap] = useState(false);
+  const [quizHistory, setQuizHistory] = useState([]);
+  const [quizState, setQuizState] = useState({
+    currentIndex: 0,
+    selectedAnswers: [],
+    showResults: false,
+    score: 0
+  });
 
   const quizCardRef = React.useRef(null);
   const introRef = useRef(null);
+  const countryDetailsRef = useRef(null);
 
   const handleStartClick = () => {
     // Fade out intro
@@ -36,7 +47,14 @@ const AfricaMapQuiz = () => {
   
   const handleCountryClick = (countryName) => {
     setSelectedCountry(countryName);
-    setCurrentFactIndex(0);
+    if (selectedCountry !== countryName) {
+      setQuizState({
+        currentIndex: 0,
+        selectedAnswers: [],
+        showResults: false,
+        score: 0
+      });
+    }
     const facts = countryFacts[countryName].facts ?? []
     
     if (quizCardRef.current) {
@@ -48,26 +66,35 @@ const AfricaMapQuiz = () => {
     else{
       setIsValidCountry(false)
     }
-    // setCurrentFactIndex(0);
-    // setIsCardVisible(true);
   
   };
 
-  const handlePrevFact = () => {
-    if (currentFactIndex > 0) {
-      setCurrentFactIndex(currentFactIndex - 1);
-    }
+  const handleLearnMore = (countryName) => {
+    setCurrentCountryDetails(countryName);
+    setShowCountryDetails(true);
+    // Scroll to details section
+    setTimeout(() => {
+      countryDetailsRef.current?.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }, 100);
   };
 
-  const handleNextFact = () => {
-    if (selectedCountry && currentFactIndex < countryFacts[selectedCountry].facts.length - 1) {
-      setCurrentFactIndex(currentFactIndex + 1);
-    }
+  const handleQuizComplete = (score, total) => {
+    setQuizHistory([...quizHistory, {
+      country: selectedCountry,
+      score,
+      total,
+      date: new Date().toLocaleString()
+    }]);
   };
-
-  // const closeCard = () => {
-  //   setIsCardVisible(false);
-  // };
+  const updateQuizState = (updater) => {
+    setQuizState(prev => {
+      const newState = typeof updater === 'function' ? updater(prev) : updater;
+      console.log('Updating state:', newState);
+      return { ...prev, ...newState };
+    });
+  };
 
   return (
     <div className="africa-map-container">
@@ -108,19 +135,47 @@ const AfricaMapQuiz = () => {
             onCountryClick={handleCountryClick}
             selectedCountry={selectedCountry}
           />
+          
         )}
       </div>
       <div ref={quizCardRef} className="quiz-section"> 
         <QuizCard
-          isVisible={isCardVisible}
           country={countryFacts[selectedCountry] ? countryFacts[selectedCountry].name : ""}
           facts={selectedCountry && isValidCountry ? countryFacts[selectedCountry].facts : []}
-          currentIndex={currentFactIndex}
-          onPrev={handlePrevFact}
-          onNext={handleNextFact}
-          // onClose={closeCard}
+          onLearnMore={handleLearnMore}
+          onComplete={handleQuizComplete}
+          quizState={quizState}
+          updateQuizState={updateQuizState}
         />
+        {quizHistory.length > 0 && (
+          <div className="quiz-history">
+            <h3>Your Quiz History</h3>
+            <ul>
+              {quizHistory.map((item, index) => (
+                <li key={index}>
+                  <span className="history-country">{item.country}</span>: 
+                  <span className="history-score">{item.score}/{item.total}</span>
+                  <span className="history-date">{item.date}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
       </div>
+        {showCountryDetails && (
+          <div id="country-details" ref={countryDetailsRef} className="country-details-section">
+            <h2>More About {currentCountryDetails}</h2>
+            <CountryDetails country={currentCountryDetails} />
+            <button 
+              className="back-button"
+              onClick={() => setShowCountryDetails(false)}
+            >
+              Back to Quiz
+            </button>
+          </div>
+        )}
+      { showMap ? <ScrollToTopButton /> : <></>}
     </div>
   );
 };

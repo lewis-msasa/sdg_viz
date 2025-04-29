@@ -60,13 +60,140 @@ export const styles = `
   
   /* Quiz Card Styles */
   .quiz-card {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
 }
+.quiz-progress {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #4CAF50;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.question {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.category {
+  color: #457b9d;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.option-button {
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.option-button:hover {
+  border-color: #a8dadc;
+  background: #f1f9f9;
+}
+
+.option-button.selected {
+  border-color: #457b9d;
+  background: #e8f4f8;
+}
+
+.option-button.correct {
+  border-color: #4CAF50;
+  background: #e8f5e9;
+}
+
+.quiz-results {
+  text-align: center;
+}
+
+.score-display {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: #333;
+}
+
+.progress-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto;
+  position: relative;
+}
+
+.progress-circle span {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.retry-button {
+  padding: 10px 20px;
+  background: #457b9d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.quiz-history {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.history-country {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.history-score {
+  color: #4CAF50;
+  margin: 0 10px;
+}
+
+.history-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+
 .quiz-card.empty-state {
   text-align: center;
   color: #666;
@@ -235,6 +362,116 @@ export const styles = `
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
   animation: float 6s ease-in-out infinite;
 }
-  
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+}
+
+.scroll-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #457b9d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.scroll-button:hover {
+  background-color: #1d3557;
+  transform: translateY(-3px);
+}
+
+.scroll-button svg {
+  font-size: 1.2rem;
+}
+
+/* Country Details Section */
+.country-details-section {
+  padding: 2rem;
+  background: #f9f9f9;
+  border-top: 2px solid #457b9d;
+  margin-top: 2rem;
+}
+
+.country-details {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.detail-columns {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.detail-column {
+  flex: 1;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.country-description {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.country-image img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Quiz Result Buttons */
+.result-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.learn-more-button {
+  padding: 10px 20px;
+  background: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.learn-more-button:hover {
+  background: #457b9d;
+  transform: translateY(-2px);
+}
+
+.back-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 10px 25px;
+  background: #457b9d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
 
 `;
