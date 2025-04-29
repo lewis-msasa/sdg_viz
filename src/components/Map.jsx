@@ -13,10 +13,25 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
     let isZoomed = false;
     let isClicked = false;
     let clickedCountry = null;
+
     const svg = d3.select(mapContainerRef.current)
       .append("svg")
       .attr("width", width)
       .attr("height", height);
+
+
+    // svg.append("text")
+    //   .attr("x", width / 2)
+    //   .attr("y", height / 2)
+    //   .attr("text-anchor", "middle")
+    //   .attr("font-size", "120px")
+    //   .attr("font-weight", "bold")
+    //   .attr("fill", "rgba(0,0,0,0.05)")
+    //   .attr("pointer-events", "none")
+    //   .text("AFRICA");
+      
+      svg.on("wheel.zoom", null); // Disable mouse wheel zoom
+      svg.on("touchstart.zoom", null); // Disable touch zoom
 
     const g = svg.append("g");
     const initialProjection = d3.geoMercator()
@@ -28,6 +43,10 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
     // Set up zoom behavior
     const zoom = d3.zoom()
     .scaleExtent([1, 8])
+    .filter(event => {
+      // Disable wheel zoom but allow other interactions
+      return event.type !== 'wheel';
+    })
     .on("zoom", (event) => {
         g.attr("transform", event.transform);
     });
