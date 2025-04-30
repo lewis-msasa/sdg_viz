@@ -9,6 +9,7 @@ import sdg1 from "./assets/sdg1.png"
 import sdg4 from "./assets/sdg4.png"
 import ScrollToTopButton from './components/scrollToTopButton';
 import CountryDetails from './components/CountryDetails';
+import CombinedQuizCard from './components/CombinedQuizCard';
 
 
 const AfricaMapQuiz = () => {
@@ -43,7 +44,10 @@ const AfricaMapQuiz = () => {
     }, 100);
   };
 
-  
+  const startCombinedQuiz = () => {
+    //setQuizMode('combined');
+    setSelectedCountry(null);
+  };
   
   const handleCountryClick = (countryName) => {
     setSelectedCountry(countryName);
@@ -175,6 +179,10 @@ const AfricaMapQuiz = () => {
             </button>
           </div>
         )}
+         <CombinedQuizCard
+          facts={Object.values(countryFacts).flatMap(country => country.facts)}
+          onComplete={handleQuizComplete}
+        />
       { showMap ? <ScrollToTopButton /> : <></>}
     </div>
   );

@@ -112,6 +112,7 @@ export const styles = `
   border: 2px solid #ddd;
   border-radius: 8px;
   background: white;
+  color: black;
   cursor: pointer;
   transition: all 0.2s;
   text-align: left;
@@ -447,6 +448,7 @@ export const styles = `
 
 .learn-more-button {
   padding: 10px 20px;
+  margin-top: 1.5rem;
   background: #1d3557;
   color: white;
   border: none;
