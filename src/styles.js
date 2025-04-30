@@ -13,6 +13,24 @@ export const styles = `
   transition: all 0.8s ease-out;
 }
 
+.map-controls {
+  pointer-events: all;
+}
+
+.select-all-button {
+  fill: #457b9d;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.select-all-button:hover {
+  fill: #1d3557;
+}
+.country.focus-country.all-selected {
+  fill: #457b9d;
+  stroke: #1d3557;
+  stroke-width: 1.5px;
+}
+
 .map-section.visible {
   transform: translateY(0);
   opacity: 1;

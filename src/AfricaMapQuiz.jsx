@@ -15,11 +15,15 @@ import CombinedQuizCard from './components/CombinedQuizCard';
 const AfricaMapQuiz = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [showCountryDetails, setShowCountryDetails] = useState(false);
+  const [showAllCountriesDetails, setShowAllCountriesDetails] = useState(false);
   const [currentCountryDetails, setCurrentCountryDetails] = useState(null);
   const [isValidCountry, setIsValidCountry] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [showMap, setShowMap] = useState(false);
+  const [showAllQuiz, setAllQuiz] = useState(false);
+  const [quizMode, setQuizMode] = useState('country'); 
   const [quizHistory, setQuizHistory] = useState([]);
+  const [allQuizHistory, setAllQuizHistory] = useState([]);
   const [quizState, setQuizState] = useState({
     currentIndex: 0,
     selectedAnswers: [],
@@ -28,8 +32,18 @@ const AfricaMapQuiz = () => {
   });
 
   const quizCardRef = React.useRef(null);
+  const allQuizCardRef = React.useRef(null);
   const introRef = useRef(null);
+
   const countryDetailsRef = useRef(null);
+  const countriesDetailsRef = useRef(null);
+
+
+  const handleSelectAll = () => {
+    setQuizMode('combined');
+    setSelectedCountry('all');
+    setShowAllCountriesDetails(true)
+  };
 
   const handleStartClick = () => {
     // Fade out intro
@@ -44,13 +58,11 @@ const AfricaMapQuiz = () => {
     }, 100);
   };
 
-  const startCombinedQuiz = () => {
-    //setQuizMode('combined');
-    setSelectedCountry(null);
-  };
+
   
   const handleCountryClick = (countryName) => {
     setSelectedCountry(countryName);
+    setQuizMode('country');
     if (selectedCountry !== countryName) {
       setQuizState({
         currentIndex: 0,
@@ -84,6 +96,13 @@ const AfricaMapQuiz = () => {
     }, 100);
   };
 
+  const handleAllQuizComplete = (score, total) => {
+    setAllQuizHistory([...allQuizHistory, {
+      score,
+      total,
+      date: new Date().toLocaleString()
+    }]);
+  };
   const handleQuizComplete = (score, total) => {
     setQuizHistory([...quizHistory, {
       country: selectedCountry,
@@ -138,10 +157,12 @@ const AfricaMapQuiz = () => {
             clickableCountries={clickableCountries} 
             onCountryClick={handleCountryClick}
             selectedCountry={selectedCountry}
+            onSelectAll={handleSelectAll}
           />
           
         )}
       </div>
+      {!showAllCountriesDetails && (
       <div ref={quizCardRef} className="quiz-section"> 
         <QuizCard
           country={countryFacts[selectedCountry] ? countryFacts[selectedCountry].name : ""}
@@ -166,7 +187,7 @@ const AfricaMapQuiz = () => {
           </div>
         )}
 
-      </div>
+      </div> )}
         {showCountryDetails && (
           <div id="country-details" ref={countryDetailsRef} className="country-details-section">
             <h2>More About {currentCountryDetails}</h2>
@@ -179,10 +200,44 @@ const AfricaMapQuiz = () => {
             </button>
           </div>
         )}
-         <CombinedQuizCard
-          facts={Object.values(countryFacts).flatMap(country => country.facts)}
-          onComplete={handleQuizComplete}
-        />
+         {showAllCountriesDetails && (
+          <>
+          <div  ref={countryDetailsRef} className="country-details-section">
+              <h2>More About the 5 countries</h2>
+              { Object.keys(countryFacts).flatMap((option, index) => ( <CountryDetails key={index} country={option} /> )) }
+              
+              <button 
+                className="back-button"
+                onClick={() => { setAllQuiz(true);  allQuizCardRef.current.scrollIntoView({ behavior: 'smooth' }); }}
+              >
+                Take Quiz
+              </button>
+            </div>
+            {showAllQuiz && (
+                   <div ref={allQuizCardRef} className="quiz-section"> 
+                      <CombinedQuizCard
+                      facts={Object.values(countryFacts).flatMap(country => country.facts)}
+                      onComplete={handleAllQuizComplete}
+                    />
+                      {quizHistory.length > 0 && (
+                    <div className="quiz-history">
+                      <h3>Your Quiz History</h3>
+                      <ul>
+                        {allQuizHistory.map((item, index) => (
+                          <li key={index}>
+                            <span className="history-score">{item.score}/{item.total}</span>
+                            <span className="history-date">{item.date}</span>
+                          </li>
+                        ))}
+                      </ul>
+                </div>
+              )}
+               </div>
+            )}
+          
+         </>
+         )}
+        
       { showMap ? <ScrollToTopButton /> : <></>}
     </div>
   );

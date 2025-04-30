@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
 
-const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
+const Map = ({ clickableCountries, onCountryClick, selectedCountry,onSelectAll }) => {
   const mapContainerRef = useRef(null);
+  const selectAllRef = useRef(null);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -19,16 +20,27 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
       .attr("width", width)
       .attr("height", height);
 
+    // Add control group
+    const controls = svg.append("g")
+      .attr("class", "map-controls")
+      .attr("transform", `translate(20,20)`);
 
-    // svg.append("text")
-    //   .attr("x", width / 2)
-    //   .attr("y", height / 2)
-    //   .attr("text-anchor", "middle")
-    //   .attr("font-size", "120px")
-    //   .attr("font-weight", "bold")
-    //   .attr("fill", "rgba(0,0,0,0.05)")
-    //   .attr("pointer-events", "none")
-    //   .text("AFRICA");
+     // Add Select All button
+    controls.append("rect")
+     .attr("x", 0)
+     .attr("y", 0)
+     .attr("width", 120)
+     .attr("height", 40)
+     .attr("rx", 5)
+     .attr("class", "select-all-button")
+     .on("click", onSelectAll);
+
+    controls.append("text")
+     .attr("x", 60)
+     .attr("y", 25)
+     .attr("text-anchor", "middle")
+     .attr("fill", "white")
+     .text("Select All");
       
       svg.on("wheel.zoom", null); // Disable mouse wheel zoom
       svg.on("touchstart.zoom", null); // Disable touch zoom
@@ -130,6 +142,14 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
         if (selectedCountry) {
           highlightSelectedCountry();
         }
+        if (selectedCountry === 'all') {
+          svg.selectAll(".country")
+            .filter(d => isClickableCountry(d.properties.NAME))
+            .classed("all-selected", true);
+        } else {
+          svg.selectAll(".country")
+            .classed("all-selected", false);
+        }
       });
       function hideTooltip(){
         tooltip.transition()
@@ -205,7 +225,7 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry }) => {
     return () => {
       svg.remove();
     };
-  }, [clickableCountries, onCountryClick, selectedCountry]);
+  }, [clickableCountries, onCountryClick, selectedCountry, onSelectAll]);
 
   return <div ref={mapContainerRef} className="map-container"></div>;
 };
