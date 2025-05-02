@@ -42,6 +42,7 @@ const AfricaMapQuiz = () => {
   const handleSelectAll = () => {
     setQuizMode('combined');
     setSelectedCountry('all');
+    setShowCountryDetails(false)
     setShowAllCountriesDetails(true)
   };
 
@@ -142,9 +143,9 @@ const AfricaMapQuiz = () => {
                       />
                   </div>
                   <h1 className="animated-text">No Poverty & Quality Education SDGs</h1>
-                  <p className="subtext">Exploring 5 least developed countries</p>
+                  <p className="subtext">How are the five least developed countries doing?</p>
                   <div className="click-prompt">
-                    <p>Click anywhere to continue</p>
+                    <p>Click anywhere to find out</p>
                     <div className="arrow-icon">↓</div>
                   </div>
                 </div>
@@ -152,16 +153,47 @@ const AfricaMapQuiz = () => {
             )}
 
         <div className={`map-section ${showMap ? 'visible' : ''}`}>
-        {showMap && (
-          <Map 
-            clickableCountries={clickableCountries} 
-            onCountryClick={handleCountryClick}
-            selectedCountry={selectedCountry}
-            onSelectAll={handleSelectAll}
-          />
           
-        )}
-      </div>
+            <div className="map-sidebar">
+              <h3>About the Focus Countries</h3>
+              <p>This map highlights key African nations including:</p>
+              <ul className="country-list">
+                {clickableCountries.map(country => (
+                  <li key={country}>{country}</li>
+                ))}
+              </ul>
+              {!showAllCountriesDetails && (
+                <div className="quiz-info">
+                  <p>To select all countries, click "Select All"</p>
+                  <button 
+                    className="select-all-button"
+                    onClick={handleSelectAll}
+                  >
+                    Select all
+                  </button>
+                </div> 
+              )}
+               {showAllCountriesDetails && (
+                <div className="click-prompt">
+                    <p>Scroll down to see more</p>
+                    <div className="arrow-icon">↓</div>
+                </div> 
+              )}
+            </div>
+            {
+              /* This the map */
+            }
+            <div className="map-wrapper">
+              <Map 
+                clickableCountries={clickableCountries} 
+                onCountryClick={handleCountryClick}
+                selectedCountry={selectedCountry}
+                onSelectAll={handleSelectAll}
+              />
+            </div>
+
+            
+        </div>
       {!showAllCountriesDetails && (
       <div ref={quizCardRef} className="quiz-section"> 
         <QuizCard
@@ -213,28 +245,30 @@ const AfricaMapQuiz = () => {
                 Take Quiz
               </button>
             </div>
+            <div ref={allQuizCardRef} className="quiz-section"> 
             {showAllQuiz && (
-                   <div ref={allQuizCardRef} className="quiz-section"> 
-                      <CombinedQuizCard
-                      facts={Object.values(countryFacts).flatMap(country => country.facts)}
-                      onComplete={handleAllQuizComplete}
-                    />
-                      {quizHistory.length > 0 && (
-                    <div className="quiz-history">
-                      <h3>Your Quiz History</h3>
-                      <ul>
-                        {allQuizHistory.map((item, index) => (
-                          <li key={index}>
-                            <span className="history-score">{item.score}/{item.total}</span>
-                            <span className="history-date">{item.date}</span>
-                          </li>
-                        ))}
-                      </ul>
-                </div>
-              )}
-               </div>
+                   
+                       <>
+                        <CombinedQuizCard
+                        facts={Object.values(countryFacts).flatMap(country => country.facts)}
+                        onComplete={handleAllQuizComplete}
+                      />
+                        {allQuizHistory.length > 0 && (
+                            <div className="quiz-history">
+                              <h3>Your Quiz History</h3>
+                              <ul>
+                                {allQuizHistory.map((item, index) => (
+                                  <li key={index}>
+                                    <span className="history-score">{item.score}/{item.total}</span>
+                                    <span className="history-date">{item.date}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                          </div>
+                    )}
+                  </>
             )}
-          
+             </div>
          </>
          )}
         

@@ -4,13 +4,59 @@ export const styles = `
     flex-direction: column;
     min-height: 120vh;
   }
-  .map-section {
+.map-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
   height: 100vh;
   position: relative;
-  background: #e8f4f8;
+  background: linear-gradient(135deg, #1d3557, #457b9d);
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.8s ease-out;
+}
+
+.map-sidebar {
+  flex: 0 0 350px;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+/* Sidebar content styles */
+.country-list {
+  columns: 2;
+  column-gap: 1rem;
+  margin: 1rem 0;
+}
+
+.country-list li {
+  margin-bottom: 0.5rem;
+  break-inside: avoid;
+}
+
+.combined-quiz-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 1.5rem;
+  background: #457b9d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.combined-quiz-button:hover {
+  background: #1d3557;
+}
+
+.map-wrapper {
+  flex: 1;
+  min-width: 300px;
 }
 
 .map-controls {
@@ -20,7 +66,18 @@ export const styles = `
 .select-all-button {
   fill: #457b9d;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s
+
+  display: block;
+  margin: 2rem auto 0;
+  padding: 10px 25px;
+  background: #457b9d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+
 }
 .select-all-button:hover {
   fill: #1d3557;
@@ -319,6 +376,16 @@ export const styles = `
     font-size: 1.2rem;
   }
 }
+@media (max-width: 900px) {
+  .map-section {
+    flex-direction: column;
+  }
+  
+  .map-sidebar {
+    flex: 1;
+    width: 100%;
+  }
+}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -416,14 +483,14 @@ export const styles = `
 /* Country Details Section */
 .country-details-section {
   padding: 2rem;
-  background: #f9f9f9;
+  background: #457b9d;
   border-top: 2px solid #457b9d;
   margin-top: 2rem;
 }
 
 .country-details {
-  max-width: 900px;
-  margin: 0 auto;
+  // max-width: 900px;
+  // margin: 0 auto;
 }
 
 .detail-columns {

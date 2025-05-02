@@ -20,27 +20,7 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry,onSelectAll }
       .attr("width", width)
       .attr("height", height);
 
-    // Add control group
-    const controls = svg.append("g")
-      .attr("class", "map-controls")
-      .attr("transform", `translate(20,20)`);
-
-     // Add Select All button
-    controls.append("rect")
-     .attr("x", 0)
-     .attr("y", 0)
-     .attr("width", 120)
-     .attr("height", 40)
-     .attr("rx", 5)
-     .attr("class", "select-all-button")
-     .on("click", onSelectAll);
-
-    controls.append("text")
-     .attr("x", 60)
-     .attr("y", 25)
-     .attr("text-anchor", "middle")
-     .attr("fill", "white")
-     .text("Select All");
+    
       
       svg.on("wheel.zoom", null); // Disable mouse wheel zoom
       svg.on("touchstart.zoom", null); // Disable touch zoom
@@ -51,6 +31,31 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry,onSelectAll }
       .scale(width / 2.5)
       .translate([width / 2, height / 2]);
     const path = d3.geoPath().projection(initialProjection);
+
+    // // Add control group
+    // const controls = svg.append("g")
+    //   .attr("class", "map-controls")
+    //   .attr("transform", `translate(20,20)`);
+
+    //  // Add Select All button
+    // controls.append("rect")
+    //  .attr("x", width/2)
+    //  .attr("y", height/2)
+    //  .attr("width", 120)
+    //  .attr("height", 40)
+    //  .attr("rx", 5)
+    //  .attr("class", "select-all-button")
+    //  .style("cursor", "pointer")
+    //  .on("click", onSelectAll);
+
+    // controls.append("text")
+    //  .attr("x", (width/2) + 60)
+    //  .attr("y", (height/2) + 25)
+    //  .attr("text-anchor", "middle")
+    //  .attr("fill", "white")
+    //  .style("cursor", "pointer")
+    //  .on("click", onSelectAll)
+    //  .text("Select All");
 
     // Set up zoom behavior
     const zoom = d3.zoom()
@@ -227,7 +232,10 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry,onSelectAll }
     };
   }, [clickableCountries, onCountryClick, selectedCountry, onSelectAll]);
 
-  return <div ref={mapContainerRef} className="map-container"></div>;
+  return <div  className="map-container">
+            <div ref={mapContainerRef}></div>
+            
+         </div>;
 };
 
 export default Map;
