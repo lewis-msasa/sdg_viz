@@ -11,7 +11,7 @@ export const styles = `
 
   height: 100vh;
   position: relative;
-  background: linear-gradient(135deg, #1d3557, #457b9d);
+  background: linear-gradient(135deg, #457b9d, #1d3557);
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.8s ease-out;
@@ -103,7 +103,7 @@ export const styles = `
   .map-container {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, #1d3557, #457b9d);
+    background: none;
   }
   
   .country {
@@ -484,8 +484,6 @@ export const styles = `
 .country-details-section {
   padding: 2rem;
   background: #457b9d;
-  border-top: 2px solid #457b9d;
-  margin-top: 2rem;
 }
 
 .country-details {

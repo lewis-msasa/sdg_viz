@@ -10,6 +10,7 @@ import sdg4 from "./assets/sdg4.png"
 import ScrollToTopButton from './components/scrollToTopButton';
 import CountryDetails from './components/CountryDetails';
 import CombinedQuizCard from './components/CombinedQuizCard';
+import AllCountriesAnimatedGDPChart from './components/AllCountriesAnimatedGDP';
 
 
 const AfricaMapQuiz = () => {
@@ -236,6 +237,17 @@ const AfricaMapQuiz = () => {
           <>
           <div  ref={countryDetailsRef} className="country-details-section">
               <h2>More About the 5 countries</h2>
+               <div className="country-details">
+                  <div className="detail-columns">
+                    <div className="detail-column">
+                        <AllCountriesAnimatedGDPChart />
+                    </div>
+                    <div className="detail-column">
+                       
+                    </div>
+                  </div>
+                  
+                </div>
               { Object.keys(countryFacts).flatMap((option, index) => ( <CountryDetails key={index} country={option} /> )) }
               
               <button 
