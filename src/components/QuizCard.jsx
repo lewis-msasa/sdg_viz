@@ -49,7 +49,7 @@ const QuizCard = ({
     let correct = 0;
     facts.forEach((quiz, index) => {
   
-      if (answers[index] === quiz.correctAnswer) {
+      if (answers[index] === quiz.correctAnswer-1) {
         correct++;
       }
     });

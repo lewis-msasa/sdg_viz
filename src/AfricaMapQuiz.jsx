@@ -11,6 +11,9 @@ import ScrollToTopButton from './components/scrollToTopButton';
 import CountryDetails from './components/CountryDetails';
 import CombinedQuizCard from './components/CombinedQuizCard';
 import AllCountriesAnimatedGDPChart from './components/AllCountriesAnimatedGDP';
+import PovertyIconography from './components/PovertyCard';
+import TableauEmbed from './components/TableauEmbed';
+import { EducationCard } from './components/EducationCard';
 
 
 const AfricaMapQuiz = () => {
@@ -65,6 +68,7 @@ const AfricaMapQuiz = () => {
   const handleCountryClick = (countryName) => {
     setSelectedCountry(countryName);
     setQuizMode('country');
+    setShowAllCountriesDetails(false)
     if (selectedCountry !== countryName) {
       setQuizState({
         currentIndex: 0,
@@ -154,13 +158,15 @@ const AfricaMapQuiz = () => {
             )}
 
         <div className={`map-section ${showMap ? 'visible' : ''}`}>
-          
+            
             <div className="map-sidebar">
               <h3>About the Focus Countries</h3>
               <p>This map highlights key African nations including:</p>
               <ul className="country-list">
-                {clickableCountries.map(country => (
-                  <li key={country}>{country}</li>
+              
+                {Object.entries(countryFacts).map(([country, countryData], index) => (
+                
+                  <li key={index}>{countryData.name}</li>
                 ))}
               </ul>
               {!showAllCountriesDetails && (
@@ -191,6 +197,15 @@ const AfricaMapQuiz = () => {
                 selectedCountry={selectedCountry}
                 onSelectAll={handleSelectAll}
               />
+            </div>
+            <div className='mini-map-topbar' style={{color:"#ffffff"}}>
+                 <p>To select all countries, click "Select All"</p>
+                  <button 
+                    className="miniselect-all-button"
+                    onClick={handleSelectAll}
+                  >
+                    Select all
+                  </button>
             </div>
 
             
@@ -223,8 +238,8 @@ const AfricaMapQuiz = () => {
       </div> )}
         {showCountryDetails && (
           <div id="country-details" ref={countryDetailsRef} className="country-details-section">
-            <h2>More About {currentCountryDetails}</h2>
-            <CountryDetails country={currentCountryDetails} />
+            <h2 style={{color: "#ffffff"}}>More About {currentCountryDetails}</h2>
+            <CountryDetails country={selectedCountry} countryName={currentCountryDetails} />
             <button 
               className="back-button"
               onClick={() => setShowCountryDetails(false)}
@@ -236,19 +251,81 @@ const AfricaMapQuiz = () => {
          {showAllCountriesDetails && (
           <>
           <div  ref={countryDetailsRef} className="country-details-section">
-              <h2>More About the 5 countries</h2>
+              <h2 style={{color:"#ffffff"}}>More About the 5 countries</h2>
                <div className="country-details">
                   <div className="detail-columns">
                     <div className="detail-column">
                         <AllCountriesAnimatedGDPChart />
                     </div>
                     <div className="detail-column">
-                       
+                       <PovertyIconography />
+                    </div>
+                  
+                  </div>
+
+                  <div className="country-details">
+                    <div className="detail-columns">
+                        {/* <div className="detail-column">
+                          <TableauEmbed vizUrl={"https://public.tableau.com/views/GDP_17463121025640/GDPDiffDashboard"}
+                            options={{
+                              width: '100%',
+                              height: '600px',
+                              hideTabs: true,
+                              hideToolbar: true,
+                            }} />
+                        </div> */}
+                        <div className="detail-column">
+                          <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>GDP Differences</p>
+                          <span><p>The table shows the GDP difference (compared to the previous year). In 2012 and 2015, South Sudan experienced a huge drop in GDP value because of Civil wars. CAR also experience the same because of the same reason.
+                                   South Sudan has a high GDP in 2011 because it had just gained independence and it utilized its oil reserves in exports</p></span>
+                          <TableauEmbed vizUrl={"https://public.tableau.com/views/GDP_17463121025640/GDPDiffDashboard"}
+                            options={{
+                              width: '100%',
+                              height: '600px',
+                              hideTabs: true,
+                              hideToolbar: true,
+                            }} />
+                        </div>
+                      </div>
+                  </div>
+
+                  <div className="country-details">
+                    <div className="detail-columns">
+                      <div className="detail-column">
+                      <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_max/MaxQualityEducationDashboard"}
+                        options={{
+                          width: '80%',
+                          height: '600px',
+                          hideTabs: true,
+                          hideToolbar: true,
+                        }} />
+                      </div>
+                      <div className="detail-column">
+                          <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_17463060491760/MaxLiteracyDashboard"}
+                            options={{
+                              width: '80%',
+                              height: '600px',
+                              hideTabs: true,
+                              hideToolbar: true,
+                            }} />
+                       </div>
                     </div>
                   </div>
+
+            
+
+                  <div className="country-details">
+                    <div className="detail-columns">
+                      <div className="detail-column">
+                         <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Summary on Education</p>
+                         <EducationCard />
+                      </div>
+                    </div>
+                  </div>
+                
                   
                 </div>
-              { Object.keys(countryFacts).flatMap((option, index) => ( <CountryDetails key={index} country={option} /> )) }
+              {/* { Object.keys(countryFacts).flatMap((option, index) => ( <CountryDetails key={index} country={option} /> )) } */}
               
               <button 
                 className="back-button"

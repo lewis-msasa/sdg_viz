@@ -7,12 +7,28 @@ export const clickableCountries = [
   ];
 
 // ... existing quiz data ...
-
+export const GdpDashboards = {
+   "Dem. Rep. Congo" : {
+       "vsOthers" : "https://public.tableau.com/views/GDP_17463121025640/DRCGDPDashboard"
+   },
+   "S. Sudan" : {
+    "vsOthers" : "https://public.tableau.com/views/GDP_17463121025640/SSudanGDPDashboard"
+   },
+   "Burundi" : {
+      "vsOthers" : "https://public.tableau.com/views/GDP_17463121025640/BurundiGDPDashboard"
+   },
+   "Central African Rep." : {
+      "vsOthers" : "https://public.tableau.com/views/GDP_17463121025640/CARGDPDashboard"
+   },
+   "Mozambique" : {
+      "vsOthers" : "https://public.tableau.com/views/GDP_17463121025640/MozambiqueGDPDashboard"
+   }
+}
 export const countryInfo = {
     "S. Sudan": {
       capital: "Juba",
-      population: 11000000,
-      area: 644329,
+      population: "11 Million",
+      area: "644329 square miles",
       language: "English",
       climate: "Tropical",
       resources: "Petroleum, hydropower, gold",
@@ -21,18 +37,351 @@ export const countryInfo = {
     },
     "Mozambique": {
       capital: "Maputo",
-      population: 31200000,
-      area: 801590,
+      population: "31.2 Million",
+      area: "801590 square miles",
       language: "Portuguese",
       climate: "Tropical to subtropical",
       resources: "Coal, titanium, natural gas",
       description: "Mozambique is a scenic country in Southeast Africa with a long Indian Ocean coastline. It's known for its wildlife, beaches, and the island archipelago of Bazaruto.",
       imageUrl: "https://example.com/mozambique.jpg"
+    },
+   "Burundi": {
+      capital: "Gitega",
+      population: "12.6 Million",
+      area: "10,720 square miles",
+      language: "Kirundi, French, English",
+      climate: "Tropical highland (equatorial in the north, temperate on central plateau)",
+      resources: "Nickel, Uranium, Gold, Tin, Petroleum, Arable land",
+      description: "Burundi is a small, landlocked country in East Africa, characterized by rolling hills and Lake Tanganyika to its southwest; it is one of the continent’s poorest nations yet rich in agricultural potential.",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/5/50/LocationBurundi.svg"
+    },
+    "Central African Republic": {
+        capital: "Bangui",
+        population: "5.0 Million",
+        area: "240,000 square miles",
+        language: "French, Sango",
+        climate: "Tropical (equatorial in the south, savanna in the north)",
+        resources: "Diamonds, Gold, Uranium, Oil, Timber",
+        description: "The Central African Republic is a landlocked nation in Central Africa, characterized by dense rainforests and savanna plains; it faces ongoing political instability and development challenges.",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Central_African_Republic_%28orthographic_projection%29.svg"
+    },
+    "Dem. Rep. Congo": {
+      capital: "Kinshasa",
+      population: "112.8 Million",
+      area: "905,000 square miles",
+      language: "French",
+      climate: "Tropical (hot and humid in the equatorial basin; cooler and drier in the southern and eastern highlands)",
+      resources: "Cobalt, Copper, Diamond, Gold, Oil",
+      description: "The Democratic Republic of the Congo is a vast country in Central Africa, the second-largest on the continent by area, endowed with immense biodiversity and mineral wealth but challenged by political instability and infrastructure deficits.",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Democratic_Republic_of_the_Congo_%28orthographic_projection%29.svg"
     }
-    // Add details for other countries
   };
 
-
+  export const sdgOverviewData = {
+    "Burundi": {
+      "name" : "Burundi",
+       "rank" : 143,
+      "score" : 56.08
+    },
+    "Central African Rep.": {
+      "name" : "Central African Republic",
+       "rank" : 166,
+      "score" : 44.21
+    },
+    "Dem. Rep. Congo": {
+      "name" : "Democratic Republic of Congo",
+       "rank" : 161,
+      "score" : 48.71
+    },
+    "Mozambique": {
+      "name" : "Mozambique",
+       "rank" : 148,
+      "score" : 54.35
+    },
+    "S. Sudan": {
+      "name" : "South Sudan",
+       "rank" : 167,
+      "score" : 40.14
+    },
+    
+  } 
+  export const educationData = [
+    {
+      "Country": "Burundi",
+      "values": [
+        {
+          "year": 2016,
+          "Adult literacy rate": 65.68773651
+        },
+        {
+          "year": 2017,
+          "Adult literacy rate": 68
+        },
+        {
+          "year": 2022,
+          "Adult literacy rate": 75.54000092
+        },
+        {
+          "year": 2024,
+          "Adult literacy rate": 85.62,
+          "Male Adult Literacy Rate" : 81,
+          "Female Literacy Rate" : 69,
+          "message" : "",
+          "genderMessage":""
+        }
+      ]
+    },
+    {
+      "Country": "Central African Republic",
+      "values": [
+        {
+          "year": 2010,
+          "Adult literacy rate": 36.75260925
+        },
+        {
+          "year": 2018,
+          "Adult literacy rate": 37
+        },
+        {
+          "year": 2019,
+          "Adult literacy rate": 42.44279099
+        },
+        {
+          "year": 2020,
+          "Adult literacy rate": 37.49000168
+        },
+        {
+          "year": 2024,
+          "Adult literacy rate": 36.75,
+          "Male Adult Literacy Rate" : 49,
+          "Female Literacy Rate" : 26
+        }
+      ]
+    },
+    {
+      "Country": "Democratic Republic of Congo",
+      "values": [
+        {
+          "year": 2012,
+          "Adult literacy rate": 75
+        },
+        {
+          "year": 2016,
+          "Adult literacy rate": 77
+        },
+        {
+          "year": 2018,
+          "Adult literacy rate": 73.55303192
+        },
+        {
+          "year": 2022,
+          "Adult literacy rate": 80.54000092
+        },
+        {
+          "year": 2024,
+          "Adult literacy rate": 89.63,
+          "Male Adult Literacy Rate" : 90,
+          "Female Literacy Rate" : 72
+          
+        }
+      ]
+    },
+    {
+      "Country": "Mozambique",
+      "values": [
+        {
+          "year": 2009,
+          "Adult literacy rate": 51
+        },
+        {
+          "year": 2015,
+          "Adult literacy rate": 56
+        },
+        {
+          "year": 2017,
+          "Adult literacy rate": 61
+        },
+        {
+          "year": 2020,
+          "Adult literacy rate": 60
+        },
+        {
+          "year": 2024,
+          "Adult literacy rate": 28.9,
+          "Male Adult Literacy Rate" : 72,
+          "Female Literacy Rate" : 49
+        }
+      ]
+    },
+    {
+      "Country": "South Sudan",
+      "values": [
+        {
+          "year": 2018,
+          "Adult literacy rate": 34.52275848,
+          "Male Adult Literacy Rate" : 40,
+          "Female Literacy Rate" : 28
+        },
+        {
+          "year": 2024,
+          "Adult literacy rate": 31.98,
+          "Male Adult Literacy Rate" : 39,
+          "Female Literacy Rate" : 25
+        }
+      ]
+    }
+  ]
+  export const povertyData =[
+    {
+      "Country": "South Sudan",
+      "povertyRate" : { rate :79, reason: "South Sudan is a poor country due to a combination of factors including ongoing conflict, political instability, a weak economy heavily reliant on oil, and limited infrastructure. These challenges exacerbate food insecurity, limit access to education and healthcare, and contribute to a cycle of poverty. ", isUp: true},
+      "values": [
+        {
+          "year": 2009,
+          "Poverty headcount ratio at $2.15 a day": 14.5,
+          //"Poverty gap at $2.15 a day": 34.5,
+          "Poverty headcount ratio at $3.65 a day": 56.6,
+          //"Poverty gap at $3.65 a day": 27.6
+        },
+        {
+          "year": 2016,
+          "Poverty headcount ratio at $2.15 a day": 67.3,
+          //"Poverty gap at $2.15 a day": 32.0,
+          "Poverty headcount ratio at $3.65 a day": 86.5,
+          //"Poverty gap at $3.65 a day": 50.9
+        },
+        {
+          "year": 2024,
+          "Poverty headcount ratio at $2.15 a day": 79.47,
+          //"Poverty gap at $2.15 a day": 13.38,
+          "Poverty headcount ratio at $3.65 a day": 92.4,
+         // "Poverty gap at $3.65 a day": null
+        }
+      ]
+    },
+    {
+      "Country": "Central African Republic",
+      "povertyRate" : { rate: 66, reason: "(CAR) struggles with widespread poverty due to a combination of factors including prolonged conflict, political instability, economic mismanagement, and a lack of infrastructure. These issues have hindered economic growth and development, despite the country's natural resources. ", isUp: true },
+      "values": [
+        {
+          "year": 2008,
+          "Poverty headcount ratio at $2.15 a day": 61.9,
+          //"Poverty gap at $2.15 a day": 29.7,
+          "Poverty headcount ratio at $3.65 a day": 80.5,
+          //"Poverty gap at $3.65 a day": 47.4
+        },
+        {
+          "year": 2021,
+          "Poverty headcount ratio at $2.15 a day": 65.7,
+          //"Poverty gap at $2.15 a day": 29.7,
+          "Poverty headcount ratio at $3.65 a day": 85.8,
+          //"Poverty gap at $3.65 a day": 49.4
+        },
+        {
+          "year": 2024,
+          "Poverty headcount ratio at $2.15 a day": 66.04,
+         // "Poverty gap at $2.15 a day": null,
+          "Poverty headcount ratio at $3.65 a day": 83.56,
+          //"Poverty gap at $3.65 a day": null
+        }
+      ]
+    },
+    {
+      "Country": "Burundi",
+      "povertyRate" : { rate:78, reason:"Burundi's poverty is a result of a complex interplay of factors, including limited land, high population density, reliance on agriculture, and a history of conflict and instability. Natural disasters, political turmoil, and a lack of infrastructure further exacerbate these challenges", isUp:true },
+      "values": [
+        {
+          "year": 2006,
+          "Poverty headcount ratio at $2.15 a day": 71.8,
+          //"Poverty gap at $2.15 a day": 27.3,
+          "Poverty headcount ratio at $3.65 a day": 90.5,
+          //"Poverty gap at $3.65 a day": 27.3
+        },
+        {
+          "year": 2013,
+          "Poverty headcount ratio at $2.15 a day": 65.1,
+          //"Poverty gap at $2.15 a day": 25.2,
+          "Poverty headcount ratio at $3.65 a day": 86.7,
+          //"Poverty gap at $3.65 a day": 25.2
+        },
+        {
+          "year": 2020,
+          "Poverty headcount ratio at $2.15 a day": 62.1,
+          //"Poverty gap at $2.15 a day": 23.5,
+          "Poverty headcount ratio at $3.65 a day": 86.2,
+          //"Poverty gap at $3.65 a day": 23.5
+        },
+        {
+          "year": 2024,
+          "Poverty headcount ratio at $2.15 a day": 78.25,
+         // "Poverty gap at $2.15 a day": null,
+          "Poverty headcount ratio at $3.65 a day": 95.56,
+          //"Poverty gap at $3.65 a day": null
+        }
+      ]
+    },
+    {
+      "Country": "Mozambique",
+      "povertyRate" : {rate : 67, isUp:true, reason: "Mozambique's poverty is a complex issue stemming from a combination of factors, including historical conflicts, economic vulnerabilities, and limited access to basic services. The country has also faced challenges like natural disasters, a rapidly growing population, and insufficient infrastructure. ", },
+      "values": [
+        {
+          "year": 2008,
+          "Poverty headcount ratio at $2.15 a day": 70.8,
+          //"Poverty gap at $2.15 a day": 33.0,
+          "Poverty headcount ratio at $3.65 a day": 89.6,
+          //"Poverty gap at $3.65 a day": 53.2
+        },
+        {
+          "year": 2014,
+          "Poverty headcount ratio at $2.15 a day": 64.6,
+          //"Poverty gap at $2.15 a day": 29.4,
+          "Poverty headcount ratio at $3.65 a day": 83.1,
+          //"Poverty gap at $3.65 a day": 48.3
+        },
+        {
+          "year": 2019,
+          "Poverty headcount ratio at $2.15 a day": 74.5,
+          //"Poverty gap at $2.15 a day": 37.5,
+          "Poverty headcount ratio at $3.65 a day": 88.6,
+          //"Poverty gap at $3.65 a day": 56.2
+        },
+        {
+          "year": 2024,
+          "Poverty headcount ratio at $2.15 a day": 67.65,
+          //"Poverty gap at $2.15 a day": null,
+          "Poverty headcount ratio at $3.65 a day": 85.59,
+          //"Poverty gap at $3.65 a day": null
+        }
+      ]
+    },
+    {
+      "Country": "Democratic Republic of Congo",
+      "povertyRate" : { rate : 62,isUp : true, reason : "The lack of formal economic opportunities, combined with the legacy of entrenched political conflicts and instability, as well as high rates of malnutrition, illness, and poor education, make the DR Congo one of the hardest places on earth to raise a family."},
+      "values": [
+        {
+          "year": 2012,
+          "Poverty headcount ratio at $2.15 a day": 69.7,
+          //"Poverty gap at $2.15 a day": 32.6,
+          "Poverty headcount ratio at $3.65 a day": 87.7,
+          //"Poverty gap at $3.65 a day": 52.3
+        },
+        {
+          "year": 2020,
+          "Poverty headcount ratio at $2.15 a day": 78.9,
+          //"Poverty gap at $2.15 a day": 40.2,
+          "Poverty headcount ratio at $3.65 a day": 92.1,
+          //"Poverty gap at $3.65 a day": 59.3
+        },
+        {
+          "year": 2024,
+          "Poverty headcount ratio at $2.15 a day": 61.77,
+          //"Poverty gap at $2.15 a day": null,
+          "Poverty headcount ratio at $3.65 a day": 87.4,
+          //"Poverty gap at $3.65 a day": null
+        }
+      ]
+    }
+  ]
   export const GDPData  = [
     {country: "Burundi",shortName : "Burundi", values: [
       {year: 2010, value: 216.727965207652}, {year: 2011, value: 230.069434925139}, 
@@ -82,93 +431,240 @@ export const countryInfo = {
   ];
   
   export const countryFacts = {
-    "S. Sudan": {
-        "name" : "South Sudan",
-        "facts" : [
-            {
-                question: "What is the capital of South Sudan?",
-                options: ["Khartoum", "Juba", "Nairobi", "Kampala"],
-                correctAnswer: 1,
-                category: "Geography"
-              },
-              {
-                question: "When did South Sudan gain independence?",
-                options: ["2005", "2011", "2015", "1999"],
-                correctAnswer: 1,
-                category: "History"
-              }
-     ]
-    },
-    "Mozambique":
+ "S. Sudan": {
+  "name": "South Sudan",
+  "facts": [
     {
-     "name" : "Mozambique",
-     "facts" : [
-        {
-            question: "What ocean borders Mozambique to the east?",
-            options: ["Atlantic", "Indian", "Pacific", "Arctic"],
-            correctAnswer: 1,
-            category: "Geography"
+      question: "What is the capital of South Sudan?",
+      options: ["Khartoum", "Juba", "Nairobi", "Kampala"],
+      correctAnswer: 2,
+      category: "Geography"
+    },
+    {
+      question: "When did South Sudan gain independence?",
+      options: ["2005", "2011", "2015", "1999"],
+      correctAnswer: 2,
+      category: "History"
+    },
+    {
+      question: "Which river flows through South Sudan and is one of the Nile’s main tributaries?",
+      options: ["Blue Nile", "White Nile", "Congo", "Zambezi"],
+      correctAnswer: 2,
+      category: "Geography"
+    },
+    {
+      question: "What is the official language of South Sudan?",
+      options: ["Arabic", "English", "French", "Swahili"],
+      correctAnswer: 2,
+      category: "Culture"
+    },
+    {
+      question: "South Sudan is one of the world’s largest producers of which resource?",
+      options: ["Natural Gas", "Oil", "Gold", "Diamonds"],
+      correctAnswer: 2,
+      category: "Economy"
+    },
+    {
+      question: "Which country borders South Sudan to the east?",
+      options: ["Uganda", "Ethiopia", "Kenya", "Central African Rep."],
+      correctAnswer: 2,
+      category: "Geography"
+    },
+    {
+      question: "What type of climate is predominant in South Sudan?",
+      options: ["Desert", "Tropical savanna", "Mediterranean", "Temperate"],
+      correctAnswer: 2,
+      category: "Climate"
+    }
+  ]
+},
+
+  "Mozambique": {
+  "name": "Mozambique",
+  "facts": [
+      {
+        question: "What is the capital city of Mozambique?",
+        options: ["Nairobi", "Maputo", "Harare", "Lusaka"],
+        correctAnswer: 0,
+        category: "Geography"
+      },
+      {
+        question: "What is Mozambique's official language?",
+        options: ["English", "French", "Portuguese", "Swahili"],
+        correctAnswer: 2,
+        category: "Culture"
+      },
+      {
+        question: "Which ocean borders Mozambique to the east?",
+        options: ["Atlantic", "Indian", "Pacific", "Arctic"],
+        correctAnswer: 2,
+        category: "Geography"
+      },
+      {
+        question: "Which country borders Mozambique to the west?",
+        options: ["Zimbabwe", "Tanzania", "Madagascar", "Somalia"],
+        correctAnswer: 1,
+        category: "Geography"
+      },
+      {
+        question: "Mozambique is one of the world’s top producers of which resource?",
+        options: ["Gold", "Coal", "Natural Gas", "Diamonds"],
+        correctAnswer: 2,
+        category: "Economy"
+      },
+      {
+        question: "Which major river flows through Mozambique?",
+        options: ["Nile", "Congo", "Limpopo", "Zambezi"],
+        correctAnswer: 4,
+        category: "Geography"
+      },
+      {
+        question: "What type of climate dominates most of Mozambique?",
+        options: ["Desert", "Temperate", "Tropical Savanna", "Mediterranean"],
+        correctAnswer: 3,
+        category: "Climate"
+      },
+      {
+        question: "Which traditional music and dance style originates from Mozambique?",
+        options: ["Salsa", "Reggae", "Marrabenta", "Samba"],
+        correctAnswer: 3,
+        category: "Culture"
+      }
+    ]
+  },
+
+    "Dem. Rep. Congo": {
+      "name": "Democratic Republic of Congo",
+      
+      "facts": [ 
+          {
+              question: "What is the capital city of the Democratic Republic of Congo?",
+              options: ["Lubumbashi", "Kinshasa", "Goma", "Kisangani"],
+              correctAnswer: 2,
+              category: "Geography"
           },
           {
-            question: "What is Mozambique's official language?",
-            options: ["English", "French", "Portuguese", "Swahili"],
-            correctAnswer: 2,
-            category: "Culture"
-          }
-    ]
-    },
-    "Dem. Rep. Congo":{
-        "name" : "Democratic Republic of Congo",
-     
-        "facts" : [ 
-            {
-                question: "What ocean borders Mozambique to the east?",
-                options: ["Atlantic", "Indian", "Pacific", "Arctic"],
-                correctAnswer: 1,
-                category: "Geography"
-              },
-              {
-                question: "What is Mozambique's official language?",
-                options: ["English", "French", "Portuguese", "Swahili"],
-                correctAnswer: 2,
-                category: "Culture"
-              }
-        ]
-    },
-    "Burundi":
-    {
-     "name" : "Burundi",
-     "facts" : [
-        {
-            question: "What ocean borders Mozambique to the east?",
-            options: ["Atlantic", "Indian", "Pacific", "Arctic"],
-            correctAnswer: 1,
-            category: "Geography"
+              question: "Which river flows through the Democratic Republic of Congo and is one of the longest in Africa?",
+              options: ["Nile", "Congo", "Zambezi", "Limpopo"],
+              correctAnswer: 2,
+              category: "Geography"
           },
           {
-            question: "What is Mozambique's official language?",
-            options: ["English", "French", "Portuguese", "Swahili"],
-            correctAnswer: 2,
-            category: "Culture"
-          }
-    ]
-    },
-    "Central African Rep.":
-    {
-     "name" : "Central African Republic",
-     "facts" : [
-        {
-            question: "What ocean borders Mozambique to the east?",
-            options: ["Atlantic", "Indian", "Pacific", "Arctic"],
-            correctAnswer: 1,
-            category: "Geography"
+              question: "What is the official language of the Democratic Republic of Congo?",
+              options: ["Swahili", "Lingala", "English", "French"],
+              correctAnswer: 4,
+              category: "Culture"
           },
           {
-            question: "What is Mozambique's official language?",
-            options: ["English", "French", "Portuguese", "Swahili"],
-            correctAnswer: 2,
-            category: "Culture"
+              question: "Which mineral is the DRC the world's leading producer of?",
+              options: ["Gold", "Cobalt", "Diamond", "Tin"],
+              correctAnswer: 2,
+              category: "Economy"
+          },
+          
+          {
+              question: "What type of climate is found in most of the Democratic Republic of Congo?",
+              options: ["Desert", "Temperate", "Tropical rainforest", "Mediterranean"],
+              correctAnswer: 3,
+              category: "Climate"
           }
-    ]
+      ]
+  }
+  ,
+   "Burundi": {
+  "name": "Burundi",
+  "facts": [
+    {
+      question: "What is the capital city of Burundi?",
+      options: ["Bujumbura", "Gitega", "Goma", "Kigali"],
+      correctAnswer: 1,
+      category: "Geography"
     },
+    {
+      question: "Which of these is an official language of Burundi?",
+      options: ["Swahili", "Portuguese", "Kirundi", "Spanish"],
+      correctAnswer: 2,
+      category: "Culture"
+    },
+    {
+      question: "Which major African lake lies on the southwestern border of Burundi?",
+      options: ["Lake Malawi", "Lake Victoria", "Lake Tanganyika", "Lake Turkana"],
+      correctAnswer: 2,
+      category: "Geography"
+    },
+    {
+      question: "Burundi is one of the world’s top producers of which resource?",
+      options: ["Coffee", "Nickel", "Diamonds", "Copper"],
+      correctAnswer: 1,
+      category: "Economy"
+    },
+    {
+      question: "Approximately how many people live in Burundi?",
+      options: ["5 Million", "25 Million", "12 Million", "50 Million"],
+      correctAnswer: 2,
+      category: "Demographics"
+    },
+    {
+      question: "What type of climate is most common in Burundi?",
+      options: ["Desert", "Tropical highland", "Mediterranean", "Temperate"],
+      correctAnswer: 1,
+      category: "Climate"
+    },
+    {
+      question: "Burundi gained independence from Belgium in which year?",
+      options: ["1955", "1962", "1970", "1945"],
+      correctAnswer: 1,
+      category: "History"
+    }
+  ]
+},
+
+ "Central African Rep.": {
+  "name": "Central African Republic",
+  "facts": [
+    {
+      question: "What is the capital city of the Central African Republic?",
+      options: ["Bangui", "N’Djamena", "Khartoum", "Brazzaville"],
+      correctAnswer: 1,
+      category: "Geography"
+    },
+    {
+      question: "Which river forms part of the southern border of the Central African Republic?",
+      options: ["Congo", "Nile", "Ubangi", "Zambezi"],
+      correctAnswer: 3,
+      category: "Geography"
+    },
+    {
+      question: "What are the official languages of the Central African Republic? (Choose one)",
+      options: ["English", "Portuguese", "Sango", "Swahili"],
+      correctAnswer: 3,
+      category: "Culture"
+    },
+    {
+      question: "Which mineral is the Central African Republic one of the world’s top producers of?",
+      options: ["Copper", "Tin", "Diamonds", "Oil"],
+      correctAnswer: 3,
+      category: "Economy"
+    },
+    {
+      question: "What type of climate dominates most of the Central African Republic?",
+      options: ["Desert", "Mediterranean", "Equatorial rainforest", "Temperate"],
+      correctAnswer: 3,
+      category: "Climate"
+    },
+    {
+      question: "Which country borders the Central African Republic to the north?",
+      options: ["Chad", "Dem. Rep. Congo", "Uganda", "Cameroon"],
+      correctAnswer: 1,
+      category: "Geography"
+    },
+    {
+      question: "Which endangered great ape can be found in the rainforests of the Central African Republic?",
+      options: ["Bonobo", "Tiger", "Western lowland gorilla", "Orangutan"],
+      correctAnswer: 3,
+      category: "Environment"
+    }
+  ]
+}
+
   };

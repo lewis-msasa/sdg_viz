@@ -1,0 +1,31 @@
+.poverty-card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #fff;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .chart-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .poverty-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chart-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  

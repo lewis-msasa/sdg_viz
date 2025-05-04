@@ -8,6 +8,7 @@ const AllCountriesAnimatedGDPChart = () => {
   const svgRef = useRef();
   const [currentYear, setCurrentYear] = useState(2010);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [everPlayed, setEverPlayed] = useState(false);
   //const [data, setData] = useState({});
   const intervalRef = useRef();
 
@@ -25,6 +26,7 @@ const AllCountriesAnimatedGDPChart = () => {
   const playAnimation = () => {
     if (!isPlaying) {
       setIsPlaying(true);
+      setEverPlayed(true);
       let i = years.indexOf(currentYear);
       intervalRef.current = setInterval(() => {
         i = (i + 1) % years.length;
@@ -129,7 +131,7 @@ const AllCountriesAnimatedGDPChart = () => {
       .data(data)
       .enter()
       .append("rect")
-      .attr("class", "bar")
+      .attr("class", d => d.shortName == "South Sudan" ? "bar-sudan": "bar" )
       .attr("x", d => x(d.shortName))
       .attr("width", x.bandwidth())
       .attr("y", d => {
@@ -165,13 +167,14 @@ const AllCountriesAnimatedGDPChart = () => {
         >
          { !isPlaying ? <FaPlay /> : <FaPause />}
         </button>
-        <button 
+        {everPlayed && (<button 
           onClick={resetAnimation} 
           style={{ padding: '8px 16px', margin: '0 5px', cursor: 'pointer' }}
         >
           Reset
-        </button>
+        </button>)}
       </div>
+      {!isPlaying && (<p style={{ textAlign: 'center'}}>Press Play to see progress</p>) }
       <div 
         id="tooltip"
         style={{
@@ -186,11 +189,20 @@ const AllCountriesAnimatedGDPChart = () => {
       ></div>
       <style>{`
         .bar {
-          fill: steelblue;
+          fill: #457b9d;
+          transition: all 0.5s ease-out;
+        }
+        .bar-sudan {
+          fill: #1d3557;
           transition: all 0.5s ease-out;
         }
         .bar:hover {
-          fill: orange;
+           fill: #457b9d;
+           opacity: 0.8;
+        }
+        .bar-sudan:hover {
+           fill: #1d3557;
+           opacity: 0.8
         }
         .axis text {
           font-size: 12px;
