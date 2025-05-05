@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import * as d3 from 'd3';
-import * as topojson from 'topojson-client';
+
 import './AfricaMapQuiz.css'
-import { clickableCountries, countryFacts } from './data/countryData';
+import { clickableCountries, countryFacts, sdgFacts } from './data/countryData';
 import Map from "./components/Map"
 import QuizCard from "./components/QuizCard"
-import sdg1 from "./assets/sdg1.png"
-import sdg4 from "./assets/sdg4.png"
+
 import ScrollToTopButton from './components/scrollToTopButton';
 import CountryDetails from './components/CountryDetails';
 import CombinedQuizCard from './components/CombinedQuizCard';
@@ -14,6 +12,7 @@ import AllCountriesAnimatedGDPChart from './components/AllCountriesAnimatedGDP';
 import PovertyIconography from './components/PovertyCard';
 import TableauEmbed from './components/TableauEmbed';
 import { EducationCard } from './components/EducationCard';
+import {IntroSection, SideIntro} from './components/IntroSection';
 
 
 const AfricaMapQuiz = () => {
@@ -32,7 +31,17 @@ const AfricaMapQuiz = () => {
     currentIndex: 0,
     selectedAnswers: [],
     showResults: false,
-    score: 0
+    score: 0,
+    showWrongAnswers: false,
+    questionResults : false
+  });
+  const [combinedQuizState, setCombinedQuizState] = useState({
+    currentIndex: 0,
+    selectedAnswers: [],
+    showResults: false,
+    score: 0,
+    showWrongAnswers: false,
+    questionResults : false
   });
 
   const quizCardRef = React.useRef(null);
@@ -125,68 +134,27 @@ const AfricaMapQuiz = () => {
     });
   };
 
+  const updateCombinedQuizState = (updater) => {
+    setCombinedQuizState(prev => {
+      const newState = typeof updater === 'function' ? updater(prev) : updater;
+      console.log('Updating state:', newState);
+      return { ...prev, ...newState };
+    });
+  };
+
+
   return (
     <div className="africa-map-container">
 
       {showIntro && (
-              <div 
-                className="intro-animation" 
-                ref={introRef}
-                onClick={handleStartClick}
-              >
-                <div className="text-background">
-                    <div className="image-container">
-                      <img 
-                        src={sdg1} 
-                        alt="No Poverty" 
-                        className="sdg-image"
-                      />
-                      <img 
-                        src={sdg4} 
-                        alt="Quality Education" 
-                        className="sdg-image"
-                      />
-                  </div>
-                  <h1 className="animated-text">No Poverty & Quality Education SDGs</h1>
-                  <p className="subtext">How are the five least developed countries doing?</p>
-                  <div className="click-prompt">
-                    <p>Click anywhere to find out</p>
-                    <div className="arrow-icon">↓</div>
-                  </div>
-                </div>
-              </div>
+               <IntroSection onClick={handleStartClick} introRef={introRef} />
             )}
 
         <div className={`map-section ${showMap ? 'visible' : ''}`}>
             
-            <div className="map-sidebar">
-              <h3>About the Focus Countries</h3>
-              <p>This map highlights key African nations including:</p>
-              <ul className="country-list">
-              
-                {Object.entries(countryFacts).map(([country, countryData], index) => (
-                
-                  <li key={index}>{countryData.name}</li>
-                ))}
-              </ul>
-              {!showAllCountriesDetails && (
-                <div className="quiz-info">
-                  <p>To select all countries, click "Select All"</p>
-                  <button 
-                    className="select-all-button"
-                    onClick={handleSelectAll}
-                  >
-                    Select all
-                  </button>
-                </div> 
-              )}
-               {showAllCountriesDetails && (
-                <div className="click-prompt">
-                    <p>Scroll down to see more</p>
-                    <div className="arrow-icon">↓</div>
-                </div> 
-              )}
-            </div>
+             <SideIntro countryFacts={countryFacts} 
+                        showAllCountriesDetails={showAllCountriesDetails} 
+                        handleSelectAll={handleSelectAll} />
             {
               /* This the map */
             }
@@ -292,6 +260,8 @@ const AfricaMapQuiz = () => {
                   <div className="country-details">
                     <div className="detail-columns">
                       <div className="detail-column">
+                      <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Maximum Quality Education Index each country has ever scored</p>
+                          <span><p>The index assesses the effectiveness, inclusivity, and equity of education systems</p></span>
                       <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_max/MaxQualityEducationDashboard"}
                         options={{
                           width: '80%',
@@ -301,6 +271,8 @@ const AfricaMapQuiz = () => {
                         }} />
                       </div>
                       <div className="detail-column">
+                        <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Highest Adult Literacy Rate each country ever reached</p>
+                        <span><p>This accesses the number of people literate per 100 people</p></span>
                           <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_17463060491760/MaxLiteracyDashboard"}
                             options={{
                               width: '80%',
@@ -331,7 +303,7 @@ const AfricaMapQuiz = () => {
                 className="back-button"
                 onClick={() => { setAllQuiz(true);  allQuizCardRef.current.scrollIntoView({ behavior: 'smooth' }); }}
               >
-                Take Quiz
+                Take Quiz to test your knowledge
               </button>
             </div>
             <div ref={allQuizCardRef} className="quiz-section"> 
@@ -339,7 +311,9 @@ const AfricaMapQuiz = () => {
                    
                        <>
                         <CombinedQuizCard
-                        facts={Object.values(countryFacts).flatMap(country => country.facts)}
+                        facts={sdgFacts}
+                        quizState={combinedQuizState}
+                        updateQuizState={updateCombinedQuizState}
                         onComplete={handleAllQuizComplete}
                       />
                         {allQuizHistory.length > 0 && (

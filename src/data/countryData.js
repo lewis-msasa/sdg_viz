@@ -81,27 +81,32 @@ export const countryInfo = {
     "Burundi": {
       "name" : "Burundi",
        "rank" : 143,
-      "score" : 56.08
+      "score" : 56.08,
+      "population" : "12,600,000"
     },
     "Central African Rep.": {
       "name" : "Central African Republic",
        "rank" : 166,
-      "score" : 44.21
+      "score" : 44.21,
+      "population" : "5,000,000"
     },
     "Dem. Rep. Congo": {
       "name" : "Democratic Republic of Congo",
        "rank" : 161,
-      "score" : 48.71
+      "score" : 48.71,
+      "population" : "112,800,000",
     },
     "Mozambique": {
       "name" : "Mozambique",
        "rank" : 148,
-      "score" : 54.35
+      "score" : 54.35,
+      "population" : "31,200,000"
     },
     "S. Sudan": {
       "name" : "South Sudan",
        "rank" : 167,
-      "score" : 40.14
+      "score" : 40.14,
+      "population" : "11,000,000"
     },
     
   } 
@@ -401,7 +406,7 @@ export const countryInfo = {
       {year: 2020, value: 462.879071687303}, {year: 2021, value: 492.263142801121}, 
       {year: 2022, value: 467.359825092786}, {year: 2023, value: 495.978897153054}
     ]},
-    {country: "Democratic Republic of the Congo", shortName: "DRC", values: [
+    {country: "Democratic Republic of Congo", shortName: "DRC", values: [
       {year: 2010, value: 314.538957671846}, {year: 2011, value: 364.713814421314}, 
       {year: 2012, value: 400.060541170331}, {year: 2013, value: 431.191823632518}, 
       {year: 2014, value: 458.004701062796}, {year: 2015, value: 467.914234284784}, 
@@ -431,51 +436,51 @@ export const countryInfo = {
   ];
   
   export const countryFacts = {
- "S. Sudan": {
-  "name": "South Sudan",
-  "facts": [
-    {
-      question: "What is the capital of South Sudan?",
-      options: ["Khartoum", "Juba", "Nairobi", "Kampala"],
-      correctAnswer: 2,
-      category: "Geography"
-    },
-    {
-      question: "When did South Sudan gain independence?",
-      options: ["2005", "2011", "2015", "1999"],
-      correctAnswer: 2,
-      category: "History"
-    },
-    {
-      question: "Which river flows through South Sudan and is one of the Nile’s main tributaries?",
-      options: ["Blue Nile", "White Nile", "Congo", "Zambezi"],
-      correctAnswer: 2,
-      category: "Geography"
-    },
-    {
-      question: "What is the official language of South Sudan?",
-      options: ["Arabic", "English", "French", "Swahili"],
-      correctAnswer: 2,
-      category: "Culture"
-    },
-    {
-      question: "South Sudan is one of the world’s largest producers of which resource?",
-      options: ["Natural Gas", "Oil", "Gold", "Diamonds"],
-      correctAnswer: 2,
-      category: "Economy"
-    },
-    {
-      question: "Which country borders South Sudan to the east?",
-      options: ["Uganda", "Ethiopia", "Kenya", "Central African Rep."],
-      correctAnswer: 2,
-      category: "Geography"
-    },
-    {
-      question: "What type of climate is predominant in South Sudan?",
-      options: ["Desert", "Tropical savanna", "Mediterranean", "Temperate"],
-      correctAnswer: 2,
-      category: "Climate"
-    }
+    "S. Sudan": {
+      "name": "South Sudan",
+      "facts": [
+        {
+          question: "What is the capital of South Sudan?",
+          options: ["Khartoum", "Juba", "Nairobi", "Kampala"],
+          correctAnswer: 2,
+          category: "Geography"
+        },
+        {
+          question: "When did South Sudan gain independence?",
+          options: ["2005", "2011", "2015", "1999"],
+          correctAnswer: 2,
+          category: "History"
+        },
+        {
+          question: "Which river flows through South Sudan and is one of the Nile’s main tributaries?",
+          options: ["Blue Nile", "White Nile", "Congo", "Zambezi"],
+          correctAnswer: 2,
+          category: "Geography"
+        },
+        {
+          question: "What is the official language of South Sudan?",
+          options: ["Arabic", "English", "French", "Swahili"],
+          correctAnswer: 2,
+          category: "Culture"
+        },
+        {
+          question: "South Sudan is one of the world’s largest producers of which resource?",
+          options: ["Natural Gas", "Oil", "Gold", "Diamonds"],
+          correctAnswer: 2,
+          category: "Economy"
+        },
+        {
+          question: "Which country borders South Sudan to the east?",
+          options: ["Uganda", "Ethiopia", "Kenya", "Central African Rep."],
+          correctAnswer: 2,
+          category: "Geography"
+        },
+        {
+          question: "What type of climate is predominant in South Sudan?",
+          options: ["Desert", "Tropical savanna", "Mediterranean", "Temperate"],
+          correctAnswer: 2,
+          category: "Climate"
+        }
   ]
 },
 
@@ -668,3 +673,77 @@ export const countryInfo = {
 }
 
   };
+
+
+  export const sdgFacts = [
+    {
+      question: "Which country has shown the most growth in GDP per capita from 2010 to 2023?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 4,
+      category: "Economy",
+      explanation: "Mozambique's GDP per capita grew from $496.19 in 2010 to $622.99 in 2023, a growth of approximately 25.6%. This is the highest percentage increase among the listed countries. Democratic Republic of Congo grew by about 108% (from $314.54 to $655.43), but when considering consistent growth and data trends, Mozambique stands out for its steady increase."
+    },
+    {
+      question: "Which country achieved the highest adult literacy rate by 2024?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 3,
+      category: "Education",
+      explanation: "By 2024, the Democratic Republic of Congo has the highest adult literacy rate at 89.63%, followed by Burundi at 85.62%. Central African Republic, Mozambique, and South Sudan have significantly lower rates at 36.75%, 28.9%, and 31.98%, respectively."
+    },
+    {
+      question: "Which country experienced a significant drop in adult literacy rate between 2020 and 2024?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 4,
+      category: "Education",
+      explanation: "Mozambique's adult literacy rate dropped dramatically from 60% in 2020 to 28.9% in 2024, a decrease of over 50%. Other countries either maintained or increased their literacy rates during this period."
+    },
+    {
+      question: "Which country has the widest gender gap in adult literacy rates in 2024?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 2,
+      category: "Education",
+      explanation: "In 2024, the Central African Republic has a gender gap of 23% in adult literacy rates (49% for males vs. 26% for females), the widest among the listed countries. For comparison, Burundi has a 12% gap, Democratic Republic of Congo 18%, Mozambique 23%, and South Sudan 14%."
+    },
+    {
+      question: "Which country had the smallest change in poverty headcount ratio at $2.15 a day between 2020 and 2024?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 2,
+      category: "Poverty",
+      explanation: "The Central African Republic's poverty headcount ratio at $2.15 a day changed from 65.7% in 2021 to 66.04% in 2024, a minimal increase of 0.34 percentage points. In contrast, Burundi increased by 16.15 points, Democratic Republic of Congo decreased by 17.13 points, Mozambique decreased by 6.85 points, and South Sudan increased by 12.17 points, making Central African Republic's change the smallest."
+    },
+    {
+      question: "Which country saw the largest increase in poverty headcount ratio at $2.15 a day from 2020 to 2024?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 1,
+      category: "Poverty",
+      explanation: "Burundi's poverty headcount ratio at $2.15 a day increased from 62.1% in 2020 to 78.25% in 2024, a rise of 16.15 percentage points. This is the largest increase compared to other countries, where poverty either decreased or increased by smaller margins."
+    },
+    {
+      question: "Which country has the lowest GDP per capita in 2023?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 1,
+      category: "Economy",
+      explanation: "In 2023, Burundi has the lowest GDP per capita at $289.30, compared to Central African Republic ($495.98), Democratic Republic of Congo ($655.43), Mozambique ($622.99), and South Sudan ($403.12)."
+    },
+    {
+      question: "Which country experienced the largest percentage decline in GDP per capita between its peak year and 2023?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 5,
+      category: "Economy",
+      explanation: "South Sudan’s GDP per capita peaked at $1671.11 in 2011 and fell to $403.12 in 2023, a decline of approximately 75.9%. This is the largest percentage drop compared to Burundi (peak $328.87 in 2022, 12% drop), Central African Republic (peak $544.40 in 2012, 8.9% drop), Democratic Republic of Congo (peak $655.43 in 2023, no drop), and Mozambique (peak $697.14 in 2014, 10.6% drop)."
+    },
+    {
+      question: "Which country had the most consistent improvement in adult literacy rate from 2016 to 2024?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 1,
+      category: "Education",
+      explanation: "Burundi’s adult literacy rate improved consistently from 65.69% in 2016 to 68% in 2017, 75.54% in 2022, and 85.62% in 2024. Other countries, like Mozambique, showed declines, and Central African Republic and South Sudan had minimal or inconsistent progress."
+    },
+    {
+      question: "Which country experienced the largest decline in GDP per capita between 2010 and 2023?",
+      options: ["Burundi", "Central African Republic", "Democratic Republic of Congo", "Mozambique", "South Sudan"],
+      correctAnswer: 5,
+      category: "Economy",
+      explanation: "South Sudan’s GDP per capita dropped from $1531.40 in 2010 to $403.12 in 2023, a decline of approximately 73.7%. This is the largest decline among the listed countries, with others showing either growth or smaller declines."
+    }
+  ];

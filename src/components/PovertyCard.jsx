@@ -15,7 +15,7 @@ const data = povertyData.map(country => {
     return (
       <div style={styles.rateCard}>
         <div style={{fontSize: '0.9rem', color: '#d2cfcf' }}>
-          which country is doing worse?
+          which country is has the highest poverty rate?
         </div>
   
         <div style={{
@@ -74,7 +74,7 @@ export const PovertyCard = ({ country, povertyRatio }) => (
             <FaPerson key={index} size={30} 
             style={{
                 color: '#457b9b',
-                opacity: index < Math.round(povertyRatio/10) ? 1 : 0.5
+                opacity: index < Math.round(povertyRatio/10) ? 1 : 0.3
               }}  />
         ))}
    
@@ -113,7 +113,7 @@ const styles = {
      borderRadius: '10px',
      height: 'auto',
      width: '400px',
-     marginTop: "4rem",
+    // marginTop: "4rem",
      position: 'relative'
   },
   card: {

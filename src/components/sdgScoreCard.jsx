@@ -75,6 +75,12 @@ export const CountrySdgOverview = ({ countryData }) => {
         <div className="country-overview">
           <SdgCard type="rank" value={countryData.rank} />
           <SdgCard type="score" value={countryData.score} />
+          <div className="sdg-card">
+            <>
+              <h3>Population</h3>
+              <p>{countryData.population}</p>
+            </>
+        </div>
         </div>
       );
 };

@@ -7,6 +7,7 @@ import { GdpDashboards, povertyData, educationData } from '../data/countryData';
 import { PovertyCard } from './PovertyCard';
 import { CountryPovertyRateCard } from './PovertyCard';
 import { CountryEducationCard } from './EducationCard';
+import {CountryAnimatedGDPChart} from './AllCountriesAnimatedGDP';
 
 const CountryDetails = ({ country, countryName }) => {
   const options = useMemo(() => ({ toolbar: 'bottom' }), []);
@@ -49,6 +50,8 @@ const CountryDetails = ({ country, countryName }) => {
         
         <div className="detail-column">
            <h3>SDG Overview Information</h3>
+            <p>The SDG Index Rank refers to a country's position in the Sustainable Development Goals (SDG) Index, which assesses how well countries are progressing toward achieving the 17 SDGs established by the United Nations.
+              The SDG Index score ranges from 0 to 100, where 100 signifies full achievement of all SDGs.</p>
             <CountrySdgOverview  countryData={sdgOverviewData[country]} />
         </div>
       </div>
@@ -56,17 +59,25 @@ const CountryDetails = ({ country, countryName }) => {
       <div className="country-details">
       <div className="detail-columns">
         <div className="detail-column">
+        <h3>Economic Information</h3>
         <TableauEmbed vizUrl={countryDashboards.vsOthers}
                             options={options} />
         </div>
 
         <div className="detail-column">
-           <h3>Poverty Information</h3>
-            <PovertyCard  key={Country} country={Country} povertyRatio={values[0]["Poverty headcount ratio at $2.15 a day"]}   />
-            <CountryPovertyRateCard rate={povertyRate} message={reason} isUp={isUp}/>
+           <h3>Economic Information</h3>
+           <div>
+             <p>Number of people per every 10 living below $2.15 per day(poverty line)</p>
+             <div style={{display: 'flex', flexDirection: 'row', gap:"4rem", alignItems:'center'}}>
+              <PovertyCard  key={Country} country={Country} povertyRatio={values[0]["Poverty headcount ratio at $2.15 a day"]}   />
+              <CountryPovertyRateCard rate={povertyRate} message={reason} isUp={isUp}/>
+             </div>
+           </div>
+            <CountryAnimatedGDPChart country={countryName} />
         </div>
       </div>
       </div>
+
 
       <div className="country-details">
       <div className="detail-columns">
@@ -79,8 +90,8 @@ const CountryDetails = ({ country, countryName }) => {
                 rate={values[0]["Adult literacy rate"]}
                 maleRate={values[0]["Male Adult Literacy Rate"]} 
                 femaleRate={values[0]["Female Literacy Rate"]}
-                message={"The Adult literacy rate in " + countryName}
-                genderMessage={"In " + countryName + ", a gender gap exists" }
+                message={"The Adult literacy rate for this country is "}
+                genderMessage={" a gender gap between male and female" }
                  />
            })}
           
