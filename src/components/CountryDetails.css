@@ -1,0 +1,22 @@
+@media (max-width: 1600px) {
+    .country-details-section {
+        padding: 2rem;
+        margin: 4rem;
+        background: #457b9d;
+        width: 90%;
+      }
+      .detail-columns {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+      .detail-column {
+        flex: 1;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+}

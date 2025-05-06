@@ -151,13 +151,11 @@ const AfricaMapQuiz = () => {
             )}
 
         <div className={`map-section ${showMap ? 'visible' : ''}`}>
-            
+          
              <SideIntro countryFacts={countryFacts} 
                         showAllCountriesDetails={showAllCountriesDetails} 
                         handleSelectAll={handleSelectAll} />
-            {
-              /* This the map */
-            }
+           
             <div className="map-wrapper">
               <Map 
                 clickableCountries={clickableCountries} 
@@ -166,7 +164,7 @@ const AfricaMapQuiz = () => {
                 onSelectAll={handleSelectAll}
               />
             </div>
-            <div className='mini-map-topbar' style={{color:"#ffffff"}}>
+            {/* <div className='mini-map-topbar' style={{color:"#ffffff"}}>
                  <p>To select all countries, click "Select All"</p>
                   <button 
                     className="miniselect-all-button"
@@ -174,7 +172,7 @@ const AfricaMapQuiz = () => {
                   >
                     Select all
                   </button>
-            </div>
+            </div> */}
 
             
         </div>

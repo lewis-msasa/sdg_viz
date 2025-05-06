@@ -8,6 +8,7 @@ import { PovertyCard } from './PovertyCard';
 import { CountryPovertyRateCard } from './PovertyCard';
 import { CountryEducationCard } from './EducationCard';
 import {CountryAnimatedGDPChart} from './AllCountriesAnimatedGDP';
+import "./CountryDetails.css"
 
 const CountryDetails = ({ country, countryName }) => {
   const options = useMemo(() => ({ toolbar: 'bottom' }), []);

@@ -8,7 +8,6 @@ export const styles = `
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-
   height: 100vh;
   position: relative;
   background: linear-gradient(135deg, #457b9d, #1d3557);
@@ -201,10 +200,12 @@ export const styles = `
     font-size: 1.2rem;
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 1600px) {
   .map-section {
+    diplay: block;
     flex-direction: column;
-    flex: 1;
+    height: auto;
+  
   }
   .mini-map-topbar {
     display:block;
@@ -216,10 +217,12 @@ export const styles = `
   }
   .map-wrapper {
       flex: 1;
-      min-width: 100%;
+      width: 100%;
     }
   .map-sidebar {
-    display: none;
+    width: 80%;
+    margin: 2rem 2rem 0 2rem;
+  
   }
 }
 
@@ -268,10 +271,6 @@ export const styles = `
   width: 90%;
 }
 
-.country-details {
-  // max-width: 900px;
-  // margin: 0 auto;
-}
 
 .detail-columns {
   display: flex;
