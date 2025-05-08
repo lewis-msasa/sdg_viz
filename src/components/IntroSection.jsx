@@ -42,39 +42,43 @@ export const IntroSection = ({ onClick, introRef}) => {
     )
 }
 
-export const SideIntro = ({countryFacts, handleSelectAll, showAllCountriesDetails}) => {
+export const SideIntro = ({countryFacts, handleSelectAll, onSelectCountry, selectedCountry, showAllCountriesDetails}) => {
     return (
-          <div className="map-sidebar">
-                      <h3>About the Focus Countries</h3>
-                      <p>This map highlights key African nations including:</p>
-                      <ul className="country-list">
-                      
-                        {Object.entries(countryFacts).map(([country, countryData], index) => (
-                        
-                          <li key={index}>{countryData.name}</li>
-                        ))}
-                      </ul>
-                      <p>When you select a country, you will have a quiz on the basic knowledge about the country. You can skip this quiz</p>
-
-                      When you select "All countries", you will see their information on SDGs. You can also take a quiz at the end to test how much you have learnt.
-
-                      {!showAllCountriesDetails && (
-                        <div className="quiz-info">
-                          <p>To select all countries, click "Select All"</p>
-                          <button 
-                            className="select-all-button"
-                            onClick={handleSelectAll}
-                          >
-                            Select all
-                          </button>
-                        </div> 
-                      )}
-                       {showAllCountriesDetails && (
-                        <div className="click-prompt" >
-                            <p>Scroll down to see more</p>
-                            <div className="arrow-icon" style={{ color: "#000000"}}>↓</div>
-                        </div> 
-                      )}
-     </div>
+      <div className="map-sidebar">
+      <h3>About the Focus Countries</h3>
+      <p>When you select "All countries", you will see their information on SDGs. You can also take a quiz at the end to test how much you have learnt.</p>
+      <p>Click any options below or click directly on the map to select a country:</p>
+      
+      <div className="country-button-group">
+        {Object.entries(countryFacts).map(([country, countryData], index) => (
+          <button
+            key={country}
+            className={`country-button ${selectedCountry === country ? 'active' : ''}`}
+            onClick={() => onSelectCountry(country)}
+          >
+            {countryData.name}
+          </button>
+        ))}
+        {!showAllCountriesDetails && (
+           <button 
+            className="country-button"
+            onClick={handleSelectAll}
+          >
+            Select All Countries
+        </button>)}
+      </div>
+      {/* {!showAllCountriesDetails && (
+      <div className="sidebar-actions">
+        <button 
+          className="select-all-button"
+          onClick={handleSelectAll}
+        >
+          Select All Countries
+        </button>
+      </div>
+      )} */}
+  
+    </div>
+   
     )
 }

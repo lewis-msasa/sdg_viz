@@ -1,6 +1,6 @@
 
 import React, { useMemo } from 'react';
-import { countryInfo, sdgOverviewData } from '../data/countryData';
+import { countryInfo, sdgOverviewData, allFemaleEducationData, slumData } from '../data/countryData';
 import { CountrySdgOverview } from './sdgScoreCard';
 import TableauEmbed from './TableauEmbed';
 import { GdpDashboards, povertyData, educationData } from '../data/countryData';
@@ -8,6 +8,8 @@ import { PovertyCard } from './PovertyCard';
 import { CountryPovertyRateCard } from './PovertyCard';
 import { CountryEducationCard } from './EducationCard';
 import {CountryAnimatedGDPChart} from './AllCountriesAnimatedGDP';
+import CountryRadarFemaleEducationChart from "./CountryRadarFemaleEducationChart";
+import CountryRadarSlumChart from "./CountryRadarSlumChart";
 import "./CountryDetails.css"
 
 const CountryDetails = ({ country, countryName }) => {
@@ -57,6 +59,14 @@ const CountryDetails = ({ country, countryName }) => {
         </div>
       </div>
 
+      {/* <div className="detail-columns">
+       
+        <div className="detail-column">
+           <h3>Living Conditions Overview Information</h3>
+           <CountryRadarSlumChart data={slumData} selectedCountry={country} selectedCountryName={countryName} />
+        </div>
+      </div> */}
+
       <div className="country-details">
       <div className="detail-columns">
         <div className="detail-column">
@@ -82,8 +92,7 @@ const CountryDetails = ({ country, countryName }) => {
 
       <div className="country-details">
       <div className="detail-columns">
-      
-        <div className="detail-column">
+      <div className="detail-column">
            <h3>Quality Education Information</h3>
            {countryEducationData.map((data) => {
                 const { Country, values } = data;
@@ -96,6 +105,9 @@ const CountryDetails = ({ country, countryName }) => {
                  />
            })}
           
+        </div>
+        <div className="detail-column">
+            <CountryRadarFemaleEducationChart data={allFemaleEducationData} selectedCountryName={countryName} selectedCountry={country} />
         </div>
       </div>
       </div>
