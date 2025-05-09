@@ -35,7 +35,7 @@ export const IntroSection = ({ onClick, introRef}) => {
                           <p className="subtext">How are the five least developed countries doing?</p>
                           <div className="click-prompt">
                             <p>Click anywhere to find out</p>
-                            <div className="arrow-icon">↓</div>
+                            {/* <div className="arrow-icon">↓</div> */}
                           </div>
                         </div>
                 </div>
