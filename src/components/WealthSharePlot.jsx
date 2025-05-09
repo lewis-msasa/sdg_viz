@@ -67,7 +67,7 @@ const WealthSharePlot = ({ povertyData }) => {
       height: 500,
       marginLeft: 50,
       marginBottom: 50,
-      title: "Wealth share owned by the richest 10% vs 20% of the population",
+      //title: "Wealth share owned by the richest 10% vs 20% of the population",
       subtitle: "By country & by year",
       x: {
         label: "Year",

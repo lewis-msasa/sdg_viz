@@ -42,7 +42,7 @@ const SlumPopulationChart = ({ data }) => {
       height: 260,
       marginTop: 30,
       marginBottom: 70,
-      title: "Population living in Slums",
+      //title: "Population living in Slums",
       subtitle: "%",
       color: {
         legend: true,

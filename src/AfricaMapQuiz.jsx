@@ -268,7 +268,18 @@ const AfricaMapQuiz = () => {
                <div className="country-details">
                   <div className="detail-columns">
                     <div className="detail-column">
-                        <AllCountriesAnimatedGDPChart />
+                        <div>
+                            <div><p>Mozambique, Burundi, South Sudan, the Democratic Republic of Congo (Congo), and the Central African Republic (CAR) are classified as Least Developed Countries due to persistent challenges across income, education, and health. High rates of child stunting, low school completion, limited access to healthcare, and gender disparities in education contribute to their low index scores. 
+
+                                  Years of conflict, political instability, and underinvestment in public services have further eroded infrastructure and institutional capacity. Their gross national incomes per capita are well below the UN’s threshold of $1,025 —some falling below $300—reflecting widespread poverty and limited economic diversification.
+
+                                  GDP stands for Gross Domestic Product and represents a key indicator of a country’s overall economic health. It reflects financial value of all goods and services produced within its borders.</p></div>
+                            <AllCountriesAnimatedGDPChart />
+                            <div>
+                              <p>This animated bar chart illustrates the GDP progression per capita of five countries between 2010 and 2023. While Burundi, Central African Republic, Congo and Mozambique maintain consistently low GDP levels, South Sudan shows notable fluctuations linked to oil revenue and political instability - civil wars.</p>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div className="detail-column">
                        <PovertyIconography />
@@ -278,10 +289,21 @@ const AfricaMapQuiz = () => {
 
                   <div className="detail-columns">
                     <div className="detail-column">
-                        <SlumPopulationChart data={slumData} />
+                      <div>
+                      <h4 >Population living in slums</h4>
+                          <p>This waffle chart illustrates the percentage of the urban population living in slums. These figures reflect not only housing shortages but broader issues like limited access to clean water, sanitation, and secure tenure—challenges that are deeply linked to poverty and conflict.
+
+South Sudan’s staggering 94% indicates severe housing deprivation attributed to a combination of protracted conflict, political instability, weak governance, and underdeveloped infrastructure. Since gaining independence in 2011, the country has been engulfed in civil war, displacement crises, and recurring ethnic violence, which have severely disrupted basic services, education, and economic development. South Sudan’s developmental struggles aren’t just economic—they are structural and deeply rooted in decades of instability and neglect.</p>
+                          <SlumPopulationChart data={slumData} />
+                      </div>
+                       
                     </div>
                     <div className="detail-column">
+                      <div>
+                         <h4>Wealth share owned by the richest 10% vs 20% of the population</h4>
+                         This chart visualizes wealth inequality giving insight into just how concentrated wealth is at the very top. Over the years, these disparities have mostly remained unchanged, emphasizing the structural nature of wealth concentration in many of the least developed African nations.
                         <WealthSharePlot povertyData={slumData} />
+                      </div>
                     </div>
                   </div>
 
@@ -343,7 +365,8 @@ const AfricaMapQuiz = () => {
                   <div className="country-details">
                     <div className="detail-columns">
                       <div className="detail-column">
-                         <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>FemaleEducation</p>
+                         <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Age Range of Female Population with No Education, %</p>
+                         <p>There are both generational and geographic disparities in women’s access to education across five of Africa’s least developed countries. In all countries, older women (ages 55–64) are significantly more likely to have received no formal education, while younger generations—especially those aged 15–24—show modest improvements. However, progress is uneven. Countries like Burundi and Congo demonstrate meaningful gains across generations, while Mozambique and the Central African Republic continue to show high exclusion rates across all age groups, indicating deeper structural barriers. Access to education for women is shaped not only by time, but also by national context and investment.</p>
                          <FemaleEducationRadarChart data={femaleEducationData} />
                       </div>
                       <div className="detail-column">

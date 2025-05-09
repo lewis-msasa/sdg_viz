@@ -14,21 +14,31 @@ const data = povertyData.map(country => {
   const PovertyRateCard = () => {
     return (
       <div style={styles.rateCard}>
-        <div style={{fontSize: '0.9rem', color: '#d2cfcf' }}>
-          which country is has the highest poverty rate?
-        </div>
+      
   
         <div style={{
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           gap: '20px'
         }}>
-      
-          <FaArrowUpRightDots size={200} style={{ color: "#f1c232"}} />
-          <div>
-            <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#f1c232' }}>
-              76%
+                  <div><p>The threshold of $2.15 per day is the international poverty line defined by the World Bank to reflect the minimum amount of income needed to meet basic needs like food, shelter, and clothing.
+
+                      It helps track extreme poverty globally in a consistent way and is used to measure progress toward Sustainable Development Goal 1: ending poverty in all its forms everywhere. Anyone living below this line is considered to lack even the most fundamental means of survival.
+
+                      For every 10% of people, the shaded icons represent how many live below the international poverty line.</p></div>
+          
+            <div style={{fontSize: '0.9rem', color: '#d2cfcf' }}>
+          which country is has the highest poverty rate?
+        </div>
+          <div style={{ display:'flex', flexDirection:'row', gap:'4px', alignItems:'center' }}>
+            <div>
+              <FaArrowUpRightDots size={30} style={{ color: "#f1c232"}} />
+              <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#f1c232' }}>
+                76%
+              </div>
             </div>
+            
             <p style={{ fontSize: '1rem', lineHeight: '1.4', marginTop: '0.5rem', color: '#fff' }}>
               The poverty rate in South Sudan has been increasing over the years because of a combination of factors, mainly, conflicts, violence and natural disasters.
             </p>
@@ -88,12 +98,12 @@ const PovertyIconography = () => {
   return (
     <div style={styles.container}>
         <div style={styles.card}>
-        <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Number of people per every 10 living below $2.15 per day(poverty line)</p>
-        {data.map((data) => {
-            const { Country, values } = data;
-            const povertyRatio = values[0]["Poverty headcount ratio at $2.15 a day"];
-            return <PovertyCard key={Country} country={Country} povertyRatio={povertyRatio} />;
-        })}
+            <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Number of people per every 10 living below $2.15 per day(poverty line)</p>
+            {data.map((data) => {
+                const { Country, values } = data;
+                const povertyRatio = values[0]["Poverty headcount ratio at $2.15 a day"];
+                return <PovertyCard key={Country} country={Country} povertyRatio={povertyRatio} />;
+            })}
         </div>
         <PovertyRateCard />
     </div>
@@ -103,7 +113,7 @@ const PovertyIconography = () => {
 const styles = {
   container: {
     display: 'flex',
-    flexDirection: "row"
+    flexDirection: "column"
   },
   rateCard: {
      backgroundColor: '#1d3557',
@@ -112,9 +122,9 @@ const styles = {
      fontFamily: 'Arial, sans-serif',
      borderRadius: '10px',
      height: 'auto',
-     width: '400px',
+     width: '90%',
     // marginTop: "4rem",
-     position: 'relative'
+    //  position: 'relative'
   },
   card: {
     display: 'flex',
@@ -131,6 +141,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
+
     justifyContent: 'left',
   },
   icon: {
