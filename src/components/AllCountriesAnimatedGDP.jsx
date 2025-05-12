@@ -286,12 +286,12 @@ const AllCountriesAnimatedGDPChart = () => {
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
     // Add title
-    svg.append("text")
-      .attr("class", "title")
-      .attr("x", width / 2)
-      .attr("y", -24)
-      .attr("text-anchor", "middle")
-      .text("GDP Progression in African Countries (2010-2023)");
+    // svg.append("text")
+    //   .attr("class", "title")
+    //   .attr("x", width / 2)
+    //   .attr("y", -24)
+    //   .attr("text-anchor", "middle")
+    //   .text("GDP Progression in African Countries (2010-2023)");
 
     // Add year display
     svg.append("text")

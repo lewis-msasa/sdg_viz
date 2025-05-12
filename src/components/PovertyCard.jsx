@@ -22,11 +22,7 @@ const data = povertyData.map(country => {
           alignItems: 'center',
           gap: '20px'
         }}>
-                  <div><p>The threshold of $2.15 per day is the international poverty line defined by the World Bank to reflect the minimum amount of income needed to meet basic needs like food, shelter, and clothing.
-
-                      It helps track extreme poverty globally in a consistent way and is used to measure progress toward Sustainable Development Goal 1: ending poverty in all its forms everywhere. Anyone living below this line is considered to lack even the most fundamental means of survival.
-
-                      For every 10% of people, the shaded icons represent how many live below the international poverty line.</p></div>
+               
           
             <div style={{fontSize: '0.9rem', color: '#d2cfcf' }}>
           which country is has the highest poverty rate?
@@ -99,11 +95,19 @@ const PovertyIconography = () => {
     <div style={styles.container}>
         <div style={styles.card}>
             <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Number of people per every 10 living below $2.15 per day(poverty line)</p>
+            <div><p>The threshold of $2.15 per day is the international poverty line defined by the World Bank to reflect the minimum amount of income needed to meet basic needs like food, shelter, and clothing.
+
+                It helps track extreme poverty globally in a consistent way and is used to measure progress toward Sustainable Development Goal 1: ending poverty in all its forms everywhere. Anyone living below this line is considered to lack even the most fundamental means of survival.
+
+                For every 10% of people, the shaded icons represent how many live below the international poverty line.</p></div>
+            <div>
             {data.map((data) => {
                 const { Country, values } = data;
                 const povertyRatio = values[0]["Poverty headcount ratio at $2.15 a day"];
                 return <PovertyCard key={Country} country={Country} povertyRatio={povertyRatio} />;
             })}
+            </div>
+            
         </div>
         <PovertyRateCard />
     </div>

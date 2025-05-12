@@ -1,0 +1,131 @@
+.africa-map-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .map-container {
+    width: 100%;
+    height: 100vh;
+    background: #e8f4f8;
+  }
+  
+  .country {
+    stroke: #fff;
+    stroke-width: 0.5px;
+    transition: all 0.3s ease;
+  }
+  
+  .focus-country {
+    fill: #e63946;
+    cursor: pointer;
+  }
+  
+  .other-country {
+    fill: #a8dadc;
+    pointer-events: none;
+  }
+  
+  .country.clicked {
+    fill: #457b9d;
+    stroke: #1d3557;
+    stroke-width: 1.5px;
+    filter: drop-shadow(0 0 5px rgba(69, 123, 157, 0.7));
+  }
+  
+  /* Quiz Card Styles */
+  .quiz-card-container {
+    position: fixed;
+    bottom: -400px;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.1);
+    border-radius: 20px 20px 0 0;
+    padding: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+  }
+  
+  .quiz-card-container.visible {
+    transform: translateY(-400px);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.8rem;
+    color: #1d3557;
+    margin: 0;
+  }
+  
+  .card-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #e63946;
+  }
+  
+  .fact-category {
+    background: #a8dadc;
+    color: #1d3557;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .fact-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #a8dadc;
+  }
+  
+  .fact-question {
+    font-weight: bold;
+    color: #457b9d;
+    margin-bottom: 5px;
+  }
+  
+  .fact-answer {
+    color: #1d3557;
+  }
+  
+  .card-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .card-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background: #457b9d;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .card-button:hover {
+    background: #1d3557;
+    transform: translateY(-2px);
+  }
+  
+  .card-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .fact-counter {
+    display: flex;
+    align-items: center;
+  }

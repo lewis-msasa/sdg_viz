@@ -269,6 +269,7 @@ const AfricaMapQuiz = () => {
                   <div className="detail-columns">
                     <div className="detail-column">
                         <div>
+                            <h4>GDP Progression in African Countries (2010-2023)</h4>
                             <div><p>Mozambique, Burundi, South Sudan, the Democratic Republic of Congo (Congo), and the Central African Republic (CAR) are classified as Least Developed Countries due to persistent challenges across income, education, and health. High rates of child stunting, low school completion, limited access to healthcare, and gender disparities in education contribute to their low index scores. 
 
                                   Years of conflict, political instability, and underinvestment in public services have further eroded infrastructure and institutional capacity. Their gross national incomes per capita are well below the UN’s threshold of $1,025 —some falling below $300—reflecting widespread poverty and limited economic diversification.

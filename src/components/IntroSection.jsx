@@ -13,7 +13,7 @@ export const IntroSection = ({ onClick, introRef}) => {
                       <div 
                         className="intro-animation" 
                         ref={introRef}
-                        onClick={onClick}
+                        //onClick={onClick}
                       >
                         <div className="text-background">
                             <div className="image-container">
@@ -34,8 +34,8 @@ export const IntroSection = ({ onClick, introRef}) => {
                             In this project, we focus on the two SDGs and on five least developed countries according to the UN</p>
                           <p className="subtext">How are the five least developed countries doing?</p>
                           <div className="click-prompt">
-                            <p>Click anywhere to find out</p>
-                            {/* <div className="arrow-icon">↓</div> */}
+                            <p>Scroll down to find out</p>
+                            <div className="arrow-icon">↓</div>
                           </div>
                         </div>
                 </div>
