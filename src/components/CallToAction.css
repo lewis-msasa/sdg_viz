@@ -1,0 +1,37 @@
+.cta-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .cta-heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-subheading {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .cta-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cta-icon {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  

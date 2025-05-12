@@ -20,6 +20,7 @@ import WealthSharePlot  from './components/WealthSharePlot';
 import AllCountriesAnimatedGDPLineChart from './components/AllCountriesAnimatedGDPLineChart';
 import { HideWhenAway } from '../hooks/useScrollAway';
 import useVisibilityOnScroll from '../hooks/useScrollAway';
+import CallToActionCard from './components/CallToActionCard';
 
 const AfricaStory = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -248,8 +249,8 @@ const AfricaStory = () => {
                           <div>
                               <AllCountriesAnimatedGDPLineChart />
                           </div>
-                          <div >
-                            {/* <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>GDP Differences</p> */}
+                          {/* <div >
+                          
                            
                             <TableauEmbed vizUrl={"https://public.tableau.com/views/GDP_17463121025640/GDPDiffDashboard"}
                               options={{
@@ -262,7 +263,7 @@ const AfricaStory = () => {
                                 CAR experienced the same drop in 2013, and also faced unusual political disturbances that year. 
                                 This suggests that the political instability may be connected to these high fluctuations in GDP - interestingly, if causality was involved, it could go both ways - the fluctuations could cause instability, or the other way around. 
                                 </p></span>
-                          </div>
+                          </div> */}
                         </div>
                     </div>
                   <br />
@@ -451,20 +452,20 @@ const AfricaStory = () => {
                     
                   )}
                   </div>
-                  <h2 style={{color:"#ffffff"}}>Call to Action</h2>
+                  {/* <h2 style={{color:"#ffffff"}}>Call to Action</h2> */}
                   <div className="country-details">
                     <div className="detail-columns">
-                      <div className="detail-column">
+                      <div className="detail-column" style={{display: 'flex', flexDirection:'column', alignItems:'center'}}>
+                         <CallToActionCard />
+                         <div style={{cursor:'pointer', margin:'auto', color:'#457b9d', display:'flex', alignItems: 'center'}}>
+                           <p  onClick={() => { learnMoreAbout(); learnMoreAbout();}}>Learn more about the countries</p>
+                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <button 
-                    className="back-button"
-                    onClick={() => { learnMoreAbout();}}
-                  >
-                    Learn More 
-                  </button>
+               
+                  
                   
                 </div>
              

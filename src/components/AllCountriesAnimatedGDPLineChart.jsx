@@ -424,7 +424,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
-          <div ref={containerRef} style={{ flex: '1 1 75%', minWidth: '620px', minHeight:'600px' }}>
+          <div ref={containerRef} style={{ flex: '1 1 60%', minWidth: '620px', minHeight:'600px' }}>
             <svg ref={svgRef}></svg>
             
             {/* <div ref={tooltipRef} className="tooltip" 
@@ -512,7 +512,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
             </div>
           </div>
           <div ref={descriptionRef} style={{
-                flex: '1 1 20%',
+                flex: '1 1 30%',
                 minWidth: '250px',
                 minHeight: '856px',
                 padding: '20px',
