@@ -40,10 +40,9 @@ export const useVisibilityOnScroll = () => {
   
     const handleScroll = () => {
       if (elementRef.current) {
-        console.log("handle")
         const rect = elementRef.current.getBoundingClientRect();
         const isOutOfView = rect.bottom < 0 || rect.top > window.innerHeight;
-        console.log("out of sight "+ isOutOfView)
+        
         if(isOutOfView){
             setIsVisible(!isOutOfView);
         }

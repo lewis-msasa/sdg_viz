@@ -29,14 +29,14 @@ const CountryRadarSlumChart = ({ data, selectedCountry, selectedCountryName}) =>
            labels.includes(d["Indicator Name"]) && (d["Country Name"] === selectedCountry ||
           d["Country Name"] === selectedCountryName)
       ).sort((a, b) => b.Year - a.Year)[0]["Year"]
-      console.log(latestYear)
+     
     const dataFiltered = data.filter(
       (d) =>
          labels.includes(d["Indicator Name"]) && (d["Country Name"] === selectedCountry ||
         d["Country Name"] === selectedCountryName) && d["Year"] == latestYear
     );
 
-    console.log(dataFiltered)
+
 
     if (dataFiltered.length < 1) return <></>
 
@@ -50,7 +50,7 @@ const CountryRadarSlumChart = ({ data, selectedCountry, selectedCountryName}) =>
         name: selectedCountry
       }));
 
-    console.log(points)
+   
 
     const keys = points.map(d => d.key)
     

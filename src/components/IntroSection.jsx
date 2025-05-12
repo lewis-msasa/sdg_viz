@@ -44,8 +44,7 @@ export const IntroSection = ({ onClick, introRef}) => {
 export const SideIntro = ({countryFacts, handleSelectAll, onSelectCountry, selectedCountry, showAllCountriesDetails}) => {
     return (
       <div className="map-sidebar">
-      <h3>About the Focus Countries</h3>
-      <p>When you select "All countries", you will see their information on SDGs. You can also take a quiz at the end to test how much you have learnt.</p>
+      <h3>Would you like to learn more about a specific country?</h3>
       <p>Click any options below or click directly on the map to select a country:</p>
       
       <div className="country-button-group">
@@ -58,13 +57,6 @@ export const SideIntro = ({countryFacts, handleSelectAll, onSelectCountry, selec
             {countryData.name}
           </button>
         ))}
-        {!showAllCountriesDetails && (
-           <button 
-            className="country-button"
-            onClick={handleSelectAll}
-          >
-            Select All Countries
-        </button>)}
       </div>
       {/* {!showAllCountriesDetails && (
       <div className="sidebar-actions">

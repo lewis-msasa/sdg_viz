@@ -32,7 +32,7 @@ const WealthSharePlot = ({ povertyData }) => {
         Value: +d["Value"]
       }));
 
-    console.log(filtered)
+  
 
     // Roll up and normalize country name
     const rolled = Array.from(

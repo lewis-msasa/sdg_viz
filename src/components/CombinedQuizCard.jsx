@@ -42,7 +42,7 @@ const CombinedQuizCard = ({
  
 
     const results = facts.map((quiz, index) => { 
-      console.log(answers[index])
+    
       return {
       question: quiz.question,
       userAnswer: quiz.options[answers[index]],

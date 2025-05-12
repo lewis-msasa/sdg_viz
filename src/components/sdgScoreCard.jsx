@@ -70,7 +70,7 @@ const SdgCard = ({ type, value, max = 166 }) => {
     };
 
 export const CountrySdgOverview = ({ countryData }) => {
-      console.log(countryData)
+     
       return (
         <div className="country-overview">
           <SdgCard type="rank" value={countryData.rank} />

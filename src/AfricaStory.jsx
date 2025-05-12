@@ -28,11 +28,11 @@ const AfricaStory = () => {
   const [currentCountryDetails, setCurrentCountryDetails] = useState(null);
   const [isValidCountry, setIsValidCountry] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
-  const [showMap, setShowMap] = useState(false);
   const [showAllQuiz, setAllQuiz] = useState(false);
   // const [showAllEconQuiz, setAllEconQuiz] = useState(false);
   const { isVisible: showAllEconQuiz, setIsVisible : setAllEconQuiz, elementRef : econQuizRef} = useVisibilityOnScroll();
   const { isVisible: showAllEduQuiz, setIsVisible : setAllEduQuiz, elementRef : eduQuizRef} = useVisibilityOnScroll();
+  const { isVisible: showMap, setIsVisible : setShowMap, elementRef : showMapRef} = useVisibilityOnScroll();
   const [quizMode, setQuizMode] = useState('country'); 
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizHistory, setQuizHistory] = useState([]);
@@ -48,10 +48,21 @@ const AfricaStory = () => {
     handleLearnMore(countryFacts[selectedCountry] ? countryFacts[selectedCountry].name : "")
   };
 
+  const learnMoreAbout = () => {
+      setShowMap(true);
+      setTimeout(() => {
+        showMapRef.current?.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }, 100);
+  }
+
   const cancelSkip = () => {
     setShowQuiz(true);
     setShowSkipModal(false);
-    quizCardRef?.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      quizCardRef?.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
    
   };
   
@@ -155,7 +166,7 @@ const AfricaStory = () => {
   };
 
   const handleLearnMore = (countryName) => {
-    console.log(countryName)
+ 
     setCurrentCountryDetails(countryName);
     setShowCountryDetails(true);
     // Scroll to details section
@@ -185,7 +196,7 @@ const AfricaStory = () => {
   const updateQuizState = (updater) => {
     setQuizState(prev => {
       const newState = typeof updater === 'function' ? updater(prev) : updater;
-      console.log('Updating state:', newState);
+      
       return { ...prev, ...newState };
     });
   };
@@ -193,21 +204,21 @@ const AfricaStory = () => {
   const updateCombinedQuizState = (updater) => {
     setCombinedQuizState(prev => {
       const newState = typeof updater === 'function' ? updater(prev) : updater;
-      console.log('Updating state:', newState);
+     
       return { ...prev, ...newState };
     });
   };
   const updateCombinedEduQuizState = (updater) => {
     setCombinedEduQuizState(prev => {
       const newState = typeof updater === 'function' ? updater(prev) : updater;
-      console.log('Updating state:', newState);
+     
       return { ...prev, ...newState };
     });
   };
   const updateCombinedEconQuizState = (updater) => {
     setCombinedEconQuizState(prev => {
       const newState = typeof updater === 'function' ? updater(prev) : updater;
-      console.log('Updating state:', newState);
+     
       return { ...prev, ...newState };
     });
   };
@@ -405,14 +416,6 @@ const AfricaStory = () => {
                     </div>
 
                   </div>
-                  <h2 style={{color:"#ffffff"}}>Call to Action</h2>
-                  <div className="country-details">
-                    <div className="detail-columns">
-                      <div className="detail-column">
-                      </div>
-                    </div>
-                  </div>
-
                   <button 
                     className="back-button"
                     onClick={() => { setAllEduQuiz(true);}}
@@ -448,13 +451,26 @@ const AfricaStory = () => {
                     
                   )}
                   </div>
-                 
+                  <h2 style={{color:"#ffffff"}}>Call to Action</h2>
+                  <div className="country-details">
+                    <div className="detail-columns">
+                      <div className="detail-column">
+                      </div>
+                    </div>
+                  </div>
+
+                  <button 
+                    className="back-button"
+                    onClick={() => { learnMoreAbout();}}
+                  >
+                    Learn More 
+                  </button>
                   
                 </div>
              
               
             </div>
-            <div ref={allQuizCardRef} className="quiz-section"> 
+            {/* <div ref={allQuizCardRef} className="quiz-section"> 
             {showAllQuiz && (
                    
                        <>
@@ -479,12 +495,12 @@ const AfricaStory = () => {
                     )}
                   </>
             )}
-             </div>
+             </div> */}
          </>
       
         
  
-        <div className={`map-section ${showMap ? 'visible' : ''}`}>
+        <div ref={showMapRef} className={`map-section ${showMap ? 'visible' : ''}`} style={{ display: showMap ? 'flex' : 'none'}}>
           
              <SideIntro countryFacts={countryFacts} 
                         showAllCountriesDetails={showAllCountriesDetails}
@@ -548,7 +564,7 @@ const AfricaStory = () => {
         )}
      
         
-      { showMap ? <ScrollToTopButton /> : <></>}
+      <ScrollToTopButton /> 
     </div>
   );
 };

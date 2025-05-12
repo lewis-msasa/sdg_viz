@@ -104,7 +104,7 @@ export const styles = `
     padding: 2rem;
     background: white;
     border-top: 2px solid #457b9d;
-    display:none;
+   
   }
   
   .map-container {

@@ -16,7 +16,7 @@ const CountryDetails = ({ country, countryName }) => {
   const options = useMemo(() => ({ toolbar: 'bottom' }), []);
   const details = countryInfo[country] || {};
   const countryDashboards = GdpDashboards[country] || {};
-  console.log(countryDashboards.vsOthers)
+
 
   const countryData = povertyData.map(country => {
     return {

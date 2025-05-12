@@ -131,7 +131,7 @@ const AfricaMapQuiz = () => {
   };
 
   const handleLearnMore = (countryName) => {
-    console.log(countryName)
+    
     setCurrentCountryDetails(countryName);
     setShowCountryDetails(true);
     // Scroll to details section
@@ -160,7 +160,7 @@ const AfricaMapQuiz = () => {
   const updateQuizState = (updater) => {
     setQuizState(prev => {
       const newState = typeof updater === 'function' ? updater(prev) : updater;
-      console.log('Updating state:', newState);
+     
       return { ...prev, ...newState };
     });
   };
@@ -168,7 +168,7 @@ const AfricaMapQuiz = () => {
   const updateCombinedQuizState = (updater) => {
     setCombinedQuizState(prev => {
       const newState = typeof updater === 'function' ? updater(prev) : updater;
-      console.log('Updating state:', newState);
+      
       return { ...prev, ...newState };
     });
   };

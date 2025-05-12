@@ -95,7 +95,7 @@ const Map = ({ clickableCountries, onCountryClick, selectedCountry,onSelectAll }
               .attr("stroke", "#000")
               .attr("stroke-width", 1.5)
               .style("cursor", "pointer"); // Explicit pointer on hover
-              console.log(isClicked)
+          
               if(!isZoomed && !isClicked){
                 //showTooltip(d,event);
               }

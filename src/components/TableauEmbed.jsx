@@ -19,7 +19,7 @@ const TableauEmbed = ({ vizUrl, options }) => {
         viz.src = vizUrl;
         if (options.toolbar) viz.toolbar = options.toolbar;
         viz.options = options;
-        console.log(viz.options)
+     
         vizRef.current = viz;
         if(!isInitialized.current){
           vizContainer.current.appendChild(viz);
