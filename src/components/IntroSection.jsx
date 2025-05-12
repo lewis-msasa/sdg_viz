@@ -29,12 +29,11 @@ export const IntroSection = ({ onClick, introRef}) => {
                               />
                           </div>
                           <h1 className="animated-text">No Poverty & Quality Education SDGs</h1>
-                          <p className="subtext">SDGs stands for Sustainable Development Goals. These are 17 global goals adopted by all United Nations Member States in 2015 as part of the 2030 Agenda for Sustainable Development.
-                            They are a universal call to action to end poverty, protect the planet, and ensure peace and prosperity for all by 2030. Each goal has specific targets (169 in total) and indicators to track progress.
-                            In this project, we focus on the two SDGs and on five least developed countries according to the UN</p>
-                          <p className="subtext">How are the five least developed countries doing?</p>
+                          <p className="subtext">The United Nations adopted 17 Sustainable Development Goals as part of the 2030 agenda for Sustainable Development to act as a universal call to action to end poverty, protect the planet, and to ensure peace and prosperity for all by 2030. With five more years to go? Are we on track? If not, what are the challenges? Can we still catch up? </p>
+                          <p className="subtext">We take a look at five least developed countries to see how they are progressing in two of the most important SDGs.</p>
+                          {/* <p className="subtext">How are the five least developed countries doing?</p> */}
                           <div className="click-prompt">
-                            <p>Scroll down to find out</p>
+                            <p>Scroll down to explore</p>
                             <div className="arrow-icon">↓</div>
                           </div>
                         </div>

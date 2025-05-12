@@ -444,7 +444,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
               }}
             ></div> */}
 
-            <div id="controls" style={{ marginTop: '20px', textAlign: 'center' }}>
+            <div id="controls" style={{ marginTop: '10px', textAlign: 'center' }}>
               <button 
                 onClick={isPlaying ? pauseAnimation : startAnimation} 
                 // disabled={isPlaying}
@@ -504,6 +504,12 @@ const AllCountriesAnimatedGDPLineChart = () => {
                 ↻ Reset
               </button>
             </div>
+            <div className="graph-summary">
+              <p style={{fontSize: '1.5rem', color: '#d2cfcf' }}>Summary</p>
+              <p>
+              This animated line graph illustrates the GDP progression per capita of five countries between 2010 and 2023. While Burundi, Central African Republic, Congo and Mozambique maintain consistently low GDP levels, South Sudan shows notable fluctuations linked to oil revenue and political instability - civil wars. 
+              </p>
+            </div>
           </div>
           <div ref={descriptionRef} style={{
                 flex: '1 1 20%',
@@ -515,14 +521,23 @@ const AllCountriesAnimatedGDPLineChart = () => {
                 marginLeft: '20px',
                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                 transition: 'all 0.3s ease'
-      }}>
+         }}>
          {descriptionContent}
-      </div>
+        </div>
 
       <style>{`
         .current-values img {
           vertical-align: middle;
           margin-right: 8px;
+        }
+        .graph-summary {
+             background-color: #1d3557;
+             color: #fff;
+             margin-top: 10px;
+             padding: 2rem;
+             /*font-family: 'Arial, sans-serif';*/
+             border-radius: 10px;
+            height: auto;
         }
         .current-values ul {
           list-style: none;

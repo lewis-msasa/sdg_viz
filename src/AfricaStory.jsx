@@ -227,51 +227,71 @@ const AfricaStory = () => {
           <IntroSection onClick={handleStartClick} introRef={introRef} /> 
           <>
           <div  ref={countryDetailsRef} className="country-details-section">
-              <h2 style={{color:"#ffffff"}}>Let's look at Poverty. How are the five countries fighting poverty?</h2>
-               <div className="country-details">
-               <div className="detail-columns">
-                    <div className="detail-column">
-                        <div>
-                            <AllCountriesAnimatedGDPLineChart />
+              <h2 style={{color:"#ffffff"}}>Let's the No Poverty SDG. How are the five countries doing in fighting poverty?</h2>
+              
+               <div className="country-details" >
+               
+                  <div className="detail-columns" >
+                      <div className="detail-column" style={{display:'flex', flexDirection: "column"}}>
+                          <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Starting with the macro-economics view, we look at progress in the  Gross Domestic Product(GDP) as a key indicator of a country’s overall economic health.</p>
+                          <div>
+                              <AllCountriesAnimatedGDPLineChart />
+                          </div>
+                          <div >
+                            {/* <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>GDP Differences</p> */}
+                           
+                            <TableauEmbed vizUrl={"https://public.tableau.com/views/GDP_17463121025640/GDPDiffDashboard"}
+                              options={{
+                                width: '100%',
+                                height: '600px',
+                                hideTabs: true,
+                                hideToolbar: true,
+                              }} />
+                               <span><p>The table shows the GDP difference (compared to the previous year).In the case of South Sudan, the sudden drops in the data coincides with significant political and social disturbances. In 2011, South Sudan had a high GDP as it had just gained independence and utilized its oil reserves in exports. In 2012, 2015, and 2016 South Sudan experienced a huge drop in GDP - a direct result of the Civil wars. 
+                                CAR experienced the same drop in 2013, and also faced unusual political disturbances that year. 
+                                This suggests that the political instability may be connected to these high fluctuations in GDP - interestingly, if causality was involved, it could go both ways - the fluctuations could cause instability, or the other way around. 
+                                </p></span>
+                          </div>
                         </div>
-                        
                     </div>
-                </div>
-                 <div className="country-details">
-                    <div className="detail-columns">
-                      
-                        <div className="detail-column">
-                          <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>GDP Differences</p>
-                          <span><p>The table shows the GDP difference (compared to the previous year). In 2012 and 2015, South Sudan experienced a huge drop in GDP value because of Civil wars. CAR also experience the same because of the same reason.
-                                   South Sudan has a high GDP in 2011 because it had just gained independence and it utilized its oil reserves in exports</p></span>
-                          <TableauEmbed vizUrl={"https://public.tableau.com/views/GDP_17463121025640/GDPDiffDashboard"}
-                            options={{
-                              width: '100%',
-                              height: '600px',
-                              hideTabs: true,
-                              hideToolbar: true,
-                            }} />
-                        </div>
-                      </div>
-                  </div>
-                  <div className="detail-columns">
+                  <br />
+                  <div className="detail-columns" style={{marginTop:'12px'}}>
                    
-                    <div className="detail-column">
-                       <PovertyIconography />
-                    </div>
-                    <div className="detail-column">
-                      <div>
-                         <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Population living in slums</p>
-                          <p>This waffle chart illustrates the percentage of the urban population living in slums. These figures reflect not only housing shortages but broader issues like limited access to clean water, sanitation, and secure tenure—challenges that are deeply linked to poverty and conflict.
-
-South Sudan’s staggering 94% indicates severe housing deprivation attributed to a combination of protracted conflict, political instability, weak governance, and underdeveloped infrastructure. Since gaining independence in 2011, the country has been engulfed in civil war, displacement crises, and recurring ethnic violence, which have severely disrupted basic services, education, and economic development. South Sudan’s developmental struggles aren’t just economic—they are structural and deeply rooted in decades of instability and neglect.</p>
-                          <SlumPopulationChart data={slumData} />
-                      </div>
+                    <div className="detail-column" style={{display:'flex', flexDirection: "column"}}>
+                        <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Moving to economics at an individual level. How are the countries doing at people-level? We use living conditions as proxies</p>
+                        <div>
+                        <PovertyIconography />
+                        </div>
+                        <div>
+                             <p style={{  fontSize:"14px", fontWeight:"bold" }}>A deeper look into housing conditions</p>
+                             <div style={{display:'flex', flexDirection: "row", alignItems:'center'}}>
+                              <div style={{width:'45%'}}>
+                                  <p>This waffle chart illustrates the percentage of the urban population living in slums. These figures reflect not only housing shortages but broader issues like limited access to clean water, sanitation, and secure tenure—challenges that are deeply linked to poverty and conflict. South Sudan’s staggering 94% indicates severe housing deprivation attributed to a combination of protracted conflict, political instability, weak governance, and underdeveloped infrastructure. Since gaining independence in 2011, the country has been engulfed in civil war, displacement crises, and recurring ethnic violence, which have severely disrupted basic services, education, and economic development. South Sudan’s developmental struggles aren’t just economic—they are structural and deeply rooted in decades of instability and neglect.</p>
+                              </div>
+                              <div style={{width: '50%'}} >
+                                 <SlumPopulationChart data={slumData} />
+                              </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                              <p style={{  fontSize:"14px", fontWeight:"bold" }}>Is everyone equally affected by poverty? </p>
+                              <div style={{display:'flex', flexDirection: "row", alignItems:'end'}}>
+                                 <div style={{width: '50%'}}>
+                                    <WealthSharePlot povertyData={slumData} />
+                                 </div>
+                                 
+                                 <div style={{ width: '45%'}}>
+                                    <p>This chart visualizes wealth inequality and shows just how concentrated wealth is at the very top. Over the years, these disparities have mostly remained unchanged, emphasizing the structural nature of wealth concentration in many of the least developed African nations.</p>
+                                 </div>
+                              </div>
+                            </div>
+                        </div>
                        
                     </div>
                   
                   </div>
-                  {/* <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Would you like to test your knowlegde on what you just learnt?</p> */}
+      
                   <button 
                     className="back-button"
                     onClick={() => { setAllEconQuiz(true);}}
@@ -308,50 +328,91 @@ South Sudan’s staggering 94% indicates severe housing deprivation attributed t
                   )}
                   </div>
                  
-                  <h2 style={{color:"#ffffff"}}>How about quality education?</h2>
+                  <h2 style={{color:"#ffffff"}}>Now let's look at the Quality Education SDG. How are the countries progressing on education?</h2>
                   <div className="country-details">
                     <div className="detail-columns">
                       <div className="detail-column">
-                      <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Maximum Quality Education Index each country has ever scored</p>
-                          <span><p>The index assesses the effectiveness, inclusivity, and equity of education systems</p></span>
-                      <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_max/MaxQualityEducationDashboard"}
-                        options={{
-                          width: '80%',
-                          height: '600px',
-                          hideTabs: true,
-                          hideToolbar: true,
-                        }} />
-                      </div>
-                      <div className="detail-column">
-                        <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Highest Adult Literacy Rate each country ever reached</p>
-                        <span><p>This accesses the number of people literate per 100 people</p></span>
-                          <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_17463060491760/MaxLiteracyDashboard"}
-                            options={{
-                              width: '80%',
-                              height: '600px',
-                              hideTabs: true,
-                              hideToolbar: true,
-                            }} />
+                        <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Let's start with the broader level; quality indices and literacy rates</p>
+                        <div>
+                             <p style={{  fontSize:"14px", fontWeight:"bold" }}>Maximum Quality Education Index each country has ever scored</p>
+                              <span><p>The index assesses the effectiveness, inclusivity, and equity of education systems. We look at the maximum education quality index a country has ever scored</p></span>
+                              <div style={{ display: 'flex', flexDirection:'column', alignItems:'start'}}>
+                                 <div style={{width: '100%' }}>
+                                 <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_max/MaxQualityEducationDashboard"}
+                                    options={{
+                                      width: '100%',
+                                      height: '600px',
+                                      hideTabs: true,
+                                      hideToolbar: true,
+                                    }} />
+                                 </div>
+                                 <div style={{width:'100%'}}>
+                                     <p>
+                                     Mozambique’s and Burundi’s results indicate stronger progress in building an inclusive education system—though still far from global targets of ~80%. South Sudan lags furthest behind with a score below 20, signaling serious structural gaps in educational infrastructure, access, and quality. 
+                                      - Success of Mozambique can be attributed to the 2018 revision of the National Education System Law extending compulsory education from seven to nine years, aiming at reducing dropout rates and enhancing literacy.
+                                      - Success of Burundi can be attributed to the introduction of free primary education in 2005 and introduction of a nine-year basic education cycle in 2010, combining primary and lower secondary education to streamline the education system and improve retention rates.
+
+                                    </p>
+                                 </div>
+                              </div>
+                           
+                        </div>
+                        <div>
+                        <p style={{  fontSize:"14px", fontWeight:"bold" }}>Here we look at adult literacy rate. We look at the Highest Adult Literacy Rate each country ever reached. </p>
+                          <span><p>This accesses the number of people literate per 100 people</p></span>
+                          <div style={{ display: 'flex', flexDirection:'column', alignItems:'start'}}>
+                              <div>
+                                  <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_17463060491760/MaxLiteracyDashboard"}
+                                  options={{
+                                    width: '100%',
+                                    height: '600px',
+                                    hideTabs: true,
+                                    hideToolbar: true,
+                                  }} />
+                              </div>
+                              <div>
+                                  <p>DRC has drastically improved. Such an increase can be attributed to the relatively recent free primary education policy introduced in September 2019. This initiative led to a significant increase in enrollment, with over 3 million additional children attending primary school. </p>
+                              </div>
+                          </div>
+                           
+                        </div>
                        </div>
                     </div>
+                    
+                    <div className="detail-columns">
+                        <div className="detail-column">
+                           <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Now let's look at access to education based on gender</p>
+                           <div>
+                                <p style={{  fontSize:"14px", fontWeight:"bold" }}>Age Range of Female Population with No Education, %</p>
+                                <p>There are both generational and geographic disparities in women’s access to education across five of Africa’s least developed countries. In all countries, older women (ages 55–64) are significantly more likely to have received no formal education, while younger generations—especially those aged 15–24—show modest improvements. However, progress is uneven. Countries like Burundi and Congo demonstrate meaningful gains across generations, while Mozambique and the Central African Republic continue to show high exclusion rates across all age groups, indicating deeper structural barriers. Access to education for women is shaped not only by time, but also by national context and investment.</p>
+                                <div style={{ display: 'flex', flexDirection:'row', alignItems:'end'}}>
+                                    <div style={{width: '50%'}}>
+                                        <FemaleEducationRadarChart data={femaleEducationData} />
+                                    </div>
+                                    <div style={{ width:'35%', background:'#1d3557', color:'#fff', padding:'2rem', borderRadius:'10px', height:'auto'}}>
+                                      <p>
+                                      The reforms introduced by Burundi and Congo have made a serious impact on the educational attainment by the female part of the population, with over 50% of females between 15 and 35 receiving education.  
+
+                                      </p>
+                                    </div>
+                                </div>
+                           </div>
+                           {/* <div>
+                                <p style={{  fontSize:"14px", fontWeight:"bold" }}>Summary on Education</p>
+                                <EducationCard />
+                           </div> */}
+                        </div>
+                    </div>
+
                   </div>
-
-            
-
+                  <h2 style={{color:"#ffffff"}}>Call to Action</h2>
                   <div className="country-details">
                     <div className="detail-columns">
                       <div className="detail-column">
-                         <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Age Range of Female Population with No Education, %</p>
-                         <p>There are both generational and geographic disparities in women’s access to education across five of Africa’s least developed countries. In all countries, older women (ages 55–64) are significantly more likely to have received no formal education, while younger generations—especially those aged 15–24—show modest improvements. However, progress is uneven. Countries like Burundi and Congo demonstrate meaningful gains across generations, while Mozambique and the Central African Republic continue to show high exclusion rates across all age groups, indicating deeper structural barriers. Access to education for women is shaped not only by time, but also by national context and investment.</p>
-                         <FemaleEducationRadarChart data={femaleEducationData} />
                       </div>
-                      <div className="detail-column">
-                         <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Summary on Education</p>
-                         <EducationCard />
-                      </div>
-                      
                     </div>
                   </div>
+
                   <button 
                     className="back-button"
                     onClick={() => { setAllEduQuiz(true);}}

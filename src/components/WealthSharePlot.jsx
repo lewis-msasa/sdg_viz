@@ -14,7 +14,7 @@ const WealthSharePlot = ({ povertyData }) => {
     const countries = [
       "Burundi",
       "Mozambique",
-      "Congo, Dem. Rep.",
+      "Dem. Rep. Congo",
       "South Sudan",
       "Central African Republic"
     ];
@@ -32,6 +32,8 @@ const WealthSharePlot = ({ povertyData }) => {
         Value: +d["Value"]
       }));
 
+    console.log(filtered)
+
     // Roll up and normalize country name
     const rolled = Array.from(
       d3.rollup(
@@ -44,7 +46,7 @@ const WealthSharePlot = ({ povertyData }) => {
       ([country, years]) =>
         Array.from(years, ([year, indicators]) => {
           const cleanCountry =
-            country === "Congo, Dem. Rep." ? "Congo" : country;
+            country === "Dem. Rep. Congo" ? "Dem. Rep. Congo" : country;
           return Array.from(indicators, ([indicator, record]) => ({
             "Country Name": cleanCountry,
             Year: +year,

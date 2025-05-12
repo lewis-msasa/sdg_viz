@@ -5,7 +5,7 @@ export const styles = `
     min-height: 120vh;
   }
 .map-section {
-  display: flex;
+  display: none; /* flex */
   flex-wrap: wrap;
   gap: 2rem;
   height: 100vh;
@@ -104,6 +104,7 @@ export const styles = `
     padding: 2rem;
     background: white;
     border-top: 2px solid #457b9d;
+    display:none;
   }
   
   .map-container {
