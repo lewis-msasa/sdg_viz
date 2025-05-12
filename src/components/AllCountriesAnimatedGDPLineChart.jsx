@@ -18,7 +18,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
   const descriptionRef = useRef(null);
 
   const margin = {top: 70, right: 120, bottom: 100, left: 60};
-  const width = containerRef.current ? 0.6 * containerRef.current.clientWidth - margin.left - margin.right : 900 - margin.left - margin.right;
+  const width = containerRef.current ? 0.8 * containerRef.current.clientWidth - margin.left - margin.right : 900 - margin.left - margin.right;
   const height = 650 - margin.top - margin.bottom; 
 
   // State
@@ -28,6 +28,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const [descriptionContent, setDescriptionContent] = useState(null);
+  const [isManualStep, setIsManualStep] = useState(false);
 
 
 
@@ -48,7 +49,6 @@ const AllCountriesAnimatedGDPLineChart = () => {
   // Animation controls
   const startAnimation = () => {
     if (animationComplete) {
-      // Reset if animation was complete
       setCurrentYear(years[0]);
       setAnimationComplete(false);
     }
@@ -68,6 +68,24 @@ const AllCountriesAnimatedGDPLineChart = () => {
     setAnimationComplete(false);
     updateChart();
     setIsPaused(false);
+  };
+  //manual steps
+  const nextYear = () => {
+    const nextIndex = years.indexOf(currentYear) + 1;
+    if (nextIndex < years.length) {
+      setCurrentYear(years[nextIndex]);
+      setAnimationComplete(false);
+    } else {
+      setAnimationComplete(true);
+    }
+  };
+
+  const prevYear = () => {
+    const prevIndex = years.indexOf(currentYear) - 1;
+    if (prevIndex >= 0) {
+      setCurrentYear(years[prevIndex]);
+      setAnimationComplete(false);
+    }
   };
 
 
@@ -346,7 +364,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
         // Update flags visibility
         gRef.current.selectAll(".flag, .gdp-valuey")
           .transition()
-          .duration(300)
+          .duration(1000)
           .attr("opacity", d => d.year === currentYear  && (d.year == lastYear || d.year == firstYear ) ? 1 : 0)
           .attr("x", d => xScaleRef.current(d.year) - 10)
           .attr("y", d => yScaleRef.current(d.value) - 10);
@@ -365,7 +383,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
           const filteredData = data[i].values.filter(d => d.year <= currentYear);
           path.datum(filteredData)
             .transition()
-            .duration(800)
+            .duration(1000)
             .attr("d", line(filteredData));
         });
 
@@ -406,10 +424,10 @@ const AllCountriesAnimatedGDPLineChart = () => {
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
-          <div ref={containerRef} style={{ flex: '1 1 70%', minWidth: '620px', minHeight:'600px' }}>
+          <div ref={containerRef} style={{ flex: '1 1 75%', minWidth: '620px', minHeight:'600px' }}>
             <svg ref={svgRef}></svg>
             
-            <div ref={tooltipRef} className="tooltip" 
+            {/* <div ref={tooltipRef} className="tooltip" 
               style={{
                 position: 'absolute',
                 padding: '8px',
@@ -424,7 +442,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
                 fontSize: '14px',
                 maxWidth: '200px'
               }}
-            ></div>
+            ></div> */}
 
             <div id="controls" style={{ marginTop: '20px', textAlign: 'center' }}>
               <button 
@@ -439,7 +457,37 @@ const AllCountriesAnimatedGDPLineChart = () => {
                   borderRadius: '4px'
                 }}
               >
-               { isPlaying ?  "⏸ Pause" : "▶ Play" }
+               { isPlaying ?  "⏸Pause" : "▶ Play" }
+              </button>
+
+              <button 
+                onClick={prevYear}
+                disabled={!isPaused || currentYear === firstYear}
+                style={{ 
+                  padding: '8px 16px', 
+                  margin: '0 5px', 
+                  backgroundColor: (!isPaused || currentYear === firstYear) ? '#ddd' : '#457b9d',
+                  color: (!isPaused || currentYear === firstYear) ? '#666' : 'white',
+                  border: 'none',
+                  borderRadius: '4px'
+                }}
+              >
+                ← Prev
+              </button>
+
+              <button 
+                onClick={nextYear}
+                disabled={!isPaused || animationComplete}
+                style={{ 
+                  padding: '8px 16px', 
+                  margin: '0 5px', 
+                  backgroundColor: (!isPaused || animationComplete) ? '#ddd' : '#457b9d',
+                  color: (!isPaused || animationComplete) ? '#666' : 'white',
+                  border: 'none',
+                  borderRadius: '4px'
+                }}
+              >
+                Next →
               </button>
 
               <button 
@@ -458,15 +506,15 @@ const AllCountriesAnimatedGDPLineChart = () => {
             </div>
           </div>
           <div ref={descriptionRef} style={{
-        flex: '1 1 25%',
-        minWidth: '250px',
-        minHeight: '756px',
-        padding: '20px',
-        backgroundColor: '#f8f9fa',
-        borderRadius: '8px',
-        marginLeft: '20px',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        transition: 'all 0.3s ease'
+                flex: '1 1 20%',
+                minWidth: '250px',
+                minHeight: '856px',
+                padding: '20px',
+                backgroundColor: '#f8f9fa',
+                borderRadius: '8px',
+                marginLeft: '20px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                transition: 'all 0.3s ease'
       }}>
          {descriptionContent}
       </div>

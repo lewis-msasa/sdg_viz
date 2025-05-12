@@ -18,7 +18,8 @@ import SlumPopulationChart from './components/SlumPopulationChart';
 import FemaleEducationRadarChart from "./components/FemaleEducationRadarChart";
 import WealthSharePlot  from './components/WealthSharePlot';
 import AllCountriesAnimatedGDPLineChart from './components/AllCountriesAnimatedGDPLineChart';
-
+import { HideWhenAway } from '../hooks/useScrollAway';
+import useVisibilityOnScroll from '../hooks/useScrollAway';
 
 const AfricaStory = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -29,6 +30,9 @@ const AfricaStory = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [showMap, setShowMap] = useState(false);
   const [showAllQuiz, setAllQuiz] = useState(false);
+  // const [showAllEconQuiz, setAllEconQuiz] = useState(false);
+  const { isVisible: showAllEconQuiz, setIsVisible : setAllEconQuiz, elementRef : econQuizRef} = useVisibilityOnScroll();
+  const { isVisible: showAllEduQuiz, setIsVisible : setAllEduQuiz, elementRef : eduQuizRef} = useVisibilityOnScroll();
   const [quizMode, setQuizMode] = useState('country'); 
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizHistory, setQuizHistory] = useState([]);
@@ -64,6 +68,25 @@ const AfricaStory = () => {
     currentIndex: 0,
     selectedAnswers: [],
     showResults: false,
+    category: null,
+    score: 0,
+    showWrongAnswers: false,
+    questionResults : false
+  });
+  const [combinedEduQuizState, setCombinedEduQuizState] = useState({
+    currentIndex: 0,
+    selectedAnswers: [],
+    showResults: false,
+    category: "Education",
+    score: 0,
+    showWrongAnswers: false,
+    questionResults : false
+  });
+  const [combinedEconQuizState, setCombinedEconQuizState] = useState({
+    currentIndex: 0,
+    selectedAnswers: [],
+    showResults: false,
+    category: "Economy",
     score: 0,
     showWrongAnswers: false,
     questionResults : false
@@ -143,9 +166,10 @@ const AfricaStory = () => {
     }, 100);
   };
 
-  const handleAllQuizComplete = (score, total) => {
+  const handleAllQuizComplete = (score, total,category) => {
     setAllQuizHistory([...allQuizHistory, {
       score,
+      category,
       total,
       date: new Date().toLocaleString()
     }]);
@@ -168,6 +192,20 @@ const AfricaStory = () => {
 
   const updateCombinedQuizState = (updater) => {
     setCombinedQuizState(prev => {
+      const newState = typeof updater === 'function' ? updater(prev) : updater;
+      console.log('Updating state:', newState);
+      return { ...prev, ...newState };
+    });
+  };
+  const updateCombinedEduQuizState = (updater) => {
+    setCombinedEduQuizState(prev => {
+      const newState = typeof updater === 'function' ? updater(prev) : updater;
+      console.log('Updating state:', newState);
+      return { ...prev, ...newState };
+    });
+  };
+  const updateCombinedEconQuizState = (updater) => {
+    setCombinedEconQuizState(prev => {
       const newState = typeof updater === 'function' ? updater(prev) : updater;
       console.log('Updating state:', newState);
       return { ...prev, ...newState };
@@ -233,18 +271,42 @@ South Sudan’s staggering 94% indicates severe housing deprivation attributed t
                     </div>
                   
                   </div>
-
-                  {/* <div className="detail-columns">
-                 
-                    <div className="detail-column">
-                      <div>
-                         <h4>Wealth share owned by the richest 10% vs 20% of the population</h4>
-                         This chart visualizes wealth inequality giving insight into just how concentrated wealth is at the very top. Over the years, these disparities have mostly remained unchanged, emphasizing the structural nature of wealth concentration in many of the least developed African nations.
-                        <WealthSharePlot povertyData={slumData} />
-                      </div>
-                    </div>
-                  </div> */}
-
+                  {/* <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Would you like to test your knowlegde on what you just learnt?</p> */}
+                  <button 
+                    className="back-button"
+                    onClick={() => { setAllEconQuiz(true);}}
+                  >
+                    Take Quiz to test your knowledge for this section
+                  </button>
+                  <br />
+                  <div ref={econQuizRef}>
+                  {showAllEconQuiz && (
+                     
+                           <>
+                            <CombinedQuizCard
+                                facts={sdgFacts.filter(fact => fact.category == "Economy" || fact.category == "Poverty")}
+                                quizState={combinedEconQuizState}
+                                category="Economy"
+                                updateQuizState={updateCombinedEconQuizState}
+                                onComplete={handleAllQuizComplete}
+                              />
+                                {allQuizHistory.filter( c => c.category == "Economy").length > 0 && (
+                                    <div className="quiz-history">
+                                      <h3>Your Quiz History</h3>
+                                      <ul>
+                                        {allQuizHistory.filter( c => c.category == "Economy").map((item, index) => (
+                                          <li key={index}>
+                                            <span className="history-score">{item.score}/{item.total}</span>
+                                            <span className="history-date">{item.date}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                  </div>
+                            )}
+                          </>
+                    
+                  )}
+                  </div>
                  
                   <h2 style={{color:"#ffffff"}}>How about quality education?</h2>
                   <div className="country-details">
@@ -290,17 +352,46 @@ South Sudan’s staggering 94% indicates severe housing deprivation attributed t
                       
                     </div>
                   </div>
-                
+                  <button 
+                    className="back-button"
+                    onClick={() => { setAllEduQuiz(true);}}
+                  >
+                    Take Quiz to test your knowledge for this section
+                  </button>
+                  <br />
+                  <div ref={eduQuizRef}>
+                  {showAllEduQuiz && (
+                     
+                           <>
+                            <CombinedQuizCard
+                                facts={sdgFacts.filter(fact => fact.category == "Education")}
+                                quizState={combinedEduQuizState}
+                                category="Education"
+                                updateQuizState={updateCombinedEduQuizState}
+                                onComplete={handleAllQuizComplete}
+                              />
+                                {allQuizHistory.filter( c => c.category == "Education").length > 0 && (
+                                    <div className="quiz-history">
+                                      <h3>Your Quiz History</h3>
+                                      <ul>
+                                        {allQuizHistory.filter( c => c.category == "Education").map((item, index) => (
+                                          <li key={index}>
+                                            <span className="history-score">{item.score}/{item.total}</span>
+                                            <span className="history-date">{item.date}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                  </div>
+                            )}
+                          </>
+                    
+                  )}
+                  </div>
+                 
                   
                 </div>
-              {/* { Object.keys(countryFacts).flatMap((option, index) => ( <CountryDetails key={index} country={option} /> )) } */}
+             
               
-              <button 
-                className="back-button"
-                onClick={() => { setAllQuiz(true);  allQuizCardRef.current.scrollIntoView({ behavior: 'smooth' }); }}
-              >
-                Take Quiz to test your knowledge
-              </button>
             </div>
             <div ref={allQuizCardRef} className="quiz-section"> 
             {showAllQuiz && (

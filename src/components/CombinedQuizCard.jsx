@@ -5,7 +5,8 @@ const CombinedQuizCard = ({
   facts,
   onComplete,
   quizState,
-  updateQuizState
+  updateQuizState,
+  category = null
 }) => {
 
   const { currentIndex, selectedAnswers, showResults, showWrongAnswers, questionResults, score } = quizState;
@@ -51,8 +52,8 @@ const CombinedQuizCard = ({
       }
     });
     const correct = results.filter(r => r.isCorrect).length;
-    updateQuizState({ score: correct, questionResults : results});
-    onComplete(correct, facts.length);
+    updateQuizState({ score: correct, questionResults : results, category: category});
+    onComplete(correct, facts.length,category);
   };
   const seeWrongAnswers = () => {
     updateQuizState({ showWrongAnswers : true});
@@ -62,6 +63,7 @@ const CombinedQuizCard = ({
       currentIndex: 0,
       selectedAnswers: [],
       showResults: false,
+      category: category,
       showWrongAnswers: true,
       score: 0
     });
