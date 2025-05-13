@@ -24,7 +24,7 @@ const data = povertyData.map(country => {
         }}>
                
           
-            <div style={{fontSize: '1.5rem', color: '#d2cfcf' }}>
+            <div style={{color: '#d2cfcf' }}>
           which countries have the highest poverty rates?
         </div>
           <div style={{ display:'flex', flexDirection:'row', gap:'4px', alignItems:'center' }}>
@@ -35,7 +35,7 @@ const data = povertyData.map(country => {
               </div>
             </div>
             
-            <p style={{ fontSize: '1rem', lineHeight: '1.4', marginTop: '0.5rem', color: '#fff' }}>
+            <p style={{ lineHeight: '1.4', marginTop: '0.5rem', color: '#fff' }}>
               The poverty rates in South Sudan and Central African Republic have been increasing. It is suggested that this is caused by a combination of factors, mainly, conflicts, violence and natural disasters.
             </p>
           </div>
@@ -96,7 +96,7 @@ const PovertyIconography = () => {
   return (
     <div style={styles.container}>
         <div style={styles.card}>
-            <p style={{fontWeight:"bold", fontSize:'14px'}}>Number of people per every 10 living below $2.15 per day(poverty line)</p>
+            <p style={{fontWeight:"bold"}}>Number of people per every 10 living below $2.15 per day(poverty line)</p>
             <div style={{ display:'flex', flexDirection:'row'}}>
                   <div style={{ display:'flex', flexDirection:'column', width: '50%'}}>
                       {data.map((data) => {
@@ -107,11 +107,7 @@ const PovertyIconography = () => {
                   </div>
               
                   <div style={{width:'45%'}}>
-                    <p>The threshold of $2.15 per day is the international poverty line defined by the World Bank to reflect the minimum amount of income needed to meet basic needs like food, shelter, and clothing.
-
-                      It helps track extreme poverty globally in a consistent way and is used to measure progress toward Sustainable Development Goal 1: ending poverty in all its forms everywhere. Anyone living below this line is considered to lack even the most fundamental means of survival.
-
-                      For every 10% of people, the shaded dark-blue icons represent how many live below the international poverty line.</p>
+                    <p>The threshold of $2.15 per day is the international poverty line defined by the World Bank to reflect the minimum amount of income needed to meet basic needs like food, shelter, and clothing. It helps track extreme poverty globally in a consistent way and is used to measure progress toward Sustainable Development Goal 1: ending poverty in all its forms everywhere. Anyone living below this line is considered to lack even the most fundamental means of survival. As we see, the two countries experiencing the highest rates of poverty are South Sudan and Burundi.</p>
                       <PovertyRateCard />
                   </div>
             

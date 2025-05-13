@@ -1,4 +1,5 @@
 export const styles = `
+   
   .africa-map-container {
     display: flex;
     flex-direction: column;
@@ -19,7 +20,7 @@ export const styles = `
    display: none;
 }
 .map-sidebar {
-  flex: 0 0 350px;
+  flex: 0 0 550px;
   padding: 2rem;
   background: #f8f9fa;
   border-radius: 8px;
@@ -267,9 +268,9 @@ export const styles = `
 /* Country Details Section */
 .country-details-section {
   padding: 2rem;
-  margin: 4rem;
-  background: #457b9d;
-  width: 90%;
+
+  background: #fff;
+
 }
 
 
@@ -282,7 +283,6 @@ export const styles = `
 
 .detail-column {
   flex: 1;
-  background: white;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);

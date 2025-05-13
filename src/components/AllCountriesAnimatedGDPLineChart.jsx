@@ -495,7 +495,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
                 style={{ 
                   padding: '8px 16px', 
                   margin: '0 5px', 
-                  backgroundColor: '#457b9d',
+                  backgroundColor: '#1d3557',
                   color: 'white',
                   border: 'none',
                   borderRadius: '4px'
@@ -505,9 +505,14 @@ const AllCountriesAnimatedGDPLineChart = () => {
               </button>
             </div>
             <div className="graph-summary">
-              <p style={{fontSize: '1.5rem', color: '#d2cfcf' }}>Summary</p>
-              <p>
-              This animated line graph illustrates the GDP progression per capita of five countries between 2010 and 2023. While Burundi, Central African Republic, Congo and Mozambique maintain consistently low GDP levels, South Sudan shows notable fluctuations linked to oil revenue and political instability - civil wars. 
+              {/* <p style={{fontSize: '1.5rem', color: '#d2cfcf' }}>Summary</p> */}
+              <p style={{fontSize: '24px'}}>
+              This animated line graph illustrates the GDP progression per capita of five countries between 2010 and 2023.
+
+              In the case of South Sudan, the sudden drops in the data coincides with significant political and social disturbances. In 2011, South Sudan had a high GDP as it had just gained independence and utilized its oil reserves in exports. In 2012, 2015, and 2016 South Sudan experienced a huge drop in GDP - a direct result of the Civil wars. 
+              CAR experienced the same drop in 2013, and also faced unusual political disturbances that year. 
+              This suggests that the political instability may be connected to these high fluctuations in GDP - interestingly, if causality was involved, it could go both ways - the fluctuations could cause instability, or the other way around. 
+
               </p>
             </div>
           </div>
@@ -516,10 +521,11 @@ const AllCountriesAnimatedGDPLineChart = () => {
                 minWidth: '250px',
                 minHeight: '856px',
                 padding: '20px',
-                backgroundColor: '#f8f9fa',
+                fontSize: '24px',
+                // backgroundColor: '#f8f9fa',
                 borderRadius: '8px',
                 marginLeft: '20px',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                // boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                 transition: 'all 0.3s ease'
          }}>
          {descriptionContent}

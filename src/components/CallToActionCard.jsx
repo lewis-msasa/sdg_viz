@@ -25,7 +25,7 @@ const CallToActionCard = () => {
             <span>Advocate for policies that prioritize the needs of LDCs.</span>
           </div>
         </div>
-        <button style={styles.button}>
+        <button class="back-button">
           Take Action Now
         </button>
       </div>
@@ -50,7 +50,6 @@ const styles = {
     color: '#333',
   },
   paragraph: {
-    fontSize: '1.1rem',
     marginBottom: '40px',
     color: '#555',
   },
@@ -64,11 +63,10 @@ const styles = {
   actionItem: {
     display: 'flex',
     alignItems: 'center',
-    fontSize: '1rem',
     color: '#444',
   },
   icon: {
-    fontSize: '1.5rem',
+    
     marginRight: '10px',
     color: '#1d3557',
   },
@@ -77,7 +75,6 @@ const styles = {
     color: '#fff',
     border: 'none',
     padding: '15px 30px',
-    fontSize: '1rem',
     cursor: 'pointer',
     borderRadius: '5px',
   },

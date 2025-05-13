@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import './AfricaStory.css'
+
 import { clickableCountries, countryFacts, sdgFacts, slumData, femaleEducationData } from './data/countryData';
 import Map from "./components/Map"
 import QuizCard from "./components/QuizCard"
@@ -21,6 +21,8 @@ import AllCountriesAnimatedGDPLineChart from './components/AllCountriesAnimatedG
 import { HideWhenAway } from '../hooks/useScrollAway';
 import useVisibilityOnScroll from '../hooks/useScrollAway';
 import CallToActionCard from './components/CallToActionCard';
+import './AfricaStory.css';
+import ConnectionCycleCard from './components/ConnectionCycleCard';
 
 const AfricaStory = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -239,13 +241,13 @@ const AfricaStory = () => {
           <IntroSection onClick={handleStartClick} introRef={introRef} /> 
           <>
           <div  ref={countryDetailsRef} className="country-details-section">
-              <h2 style={{color:"#ffffff"}}>Let's the No Poverty SDG. How are the five countries doing in fighting poverty?</h2>
+              <h1 className='main-header'>Let's start with the No Poverty SDG. How are the five countries doing in fighting poverty?</h1>
               
                <div className="country-details" >
                
                   <div className="detail-columns" >
                       <div className="detail-column" style={{display:'flex', flexDirection: "column"}}>
-                          <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Starting with the macro-economics view, we look at progress in the  Gross Domestic Product(GDP) as a key indicator of a country’s overall economic health.</p>
+                          <p className='sub-header'>Starting from the macro-economics view, we look at progress in the  Gross Domestic Product(GDP) as a key indicator of a country’s overall economic health.</p>
                           <div>
                               <AllCountriesAnimatedGDPLineChart />
                           </div>
@@ -270,12 +272,12 @@ const AfricaStory = () => {
                   <div className="detail-columns" style={{marginTop:'12px'}}>
                    
                     <div className="detail-column" style={{display:'flex', flexDirection: "column"}}>
-                        <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Moving to economics at an individual level. How are the countries doing at people-level? We use living conditions as proxies</p>
+                        <p className='sub-header'>But what do these numbers and disturbances mean for people - on an individual level? </p>
                         <div>
                         <PovertyIconography />
                         </div>
                         <div>
-                             <p style={{  fontSize:"14px", fontWeight:"bold" }}>A deeper look into housing conditions</p>
+                             <p style={{fontWeight:"bold" }}>A deeper look into housing conditions</p>
                              <div style={{display:'flex', flexDirection: "row", alignItems:'center'}}>
                               <div style={{width:'45%'}}>
                                   <p>This waffle chart illustrates the percentage of the urban population living in slums. These figures reflect not only housing shortages but broader issues like limited access to clean water, sanitation, and secure tenure—challenges that are deeply linked to poverty and conflict. South Sudan’s staggering 94% indicates severe housing deprivation attributed to a combination of protracted conflict, political instability, weak governance, and underdeveloped infrastructure. Since gaining independence in 2011, the country has been engulfed in civil war, displacement crises, and recurring ethnic violence, which have severely disrupted basic services, education, and economic development. South Sudan’s developmental struggles aren’t just economic—they are structural and deeply rooted in decades of instability and neglect.</p>
@@ -287,7 +289,7 @@ const AfricaStory = () => {
                         </div>
                         <div>
                             <div>
-                              <p style={{  fontSize:"14px", fontWeight:"bold" }}>Is everyone equally affected by poverty? </p>
+                              <p style={{  fontWeight:"bold" }}>Is everyone equally affected by poverty? </p>
                               <div style={{display:'flex', flexDirection: "row", alignItems:'end'}}>
                                  <div style={{width: '50%'}}>
                                     <WealthSharePlot povertyData={slumData} />
@@ -340,20 +342,20 @@ const AfricaStory = () => {
                   )}
                   </div>
                  
-                  <h2 style={{color:"#ffffff"}}>Now let's look at the Quality Education SDG. How are the countries progressing on education?</h2>
+                  <h2 className='main-header'>Now let's look at the Quality Education SDG. How are the countries progressing on education?</h2>
                   <div className="country-details">
                     <div className="detail-columns">
                       <div className="detail-column">
-                        <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Let's start with the broader level; quality indices and literacy rates</p>
+                        <p className='sub-header'>Let's start with the broader level; quality indices and literacy rates</p>
                         <div>
-                             <p style={{  fontSize:"14px", fontWeight:"bold" }}>Maximum Quality Education Index each country has ever scored</p>
+                             <p style={{ fontWeight:"bold" }}>Maximum Quality Education Index each country has ever scored</p>
                               <span><p>The index assesses the effectiveness, inclusivity, and equity of education systems. We look at the maximum education quality index a country has ever scored</p></span>
                               <div style={{ display: 'flex', flexDirection:'column', alignItems:'start'}}>
                                  <div style={{width: '100%' }}>
                                  <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_max/MaxQualityEducationDashboard"}
                                     options={{
                                       width: '100%',
-                                      height: '600px',
+                                      height: '800px',
                                       hideTabs: true,
                                       hideToolbar: true,
                                     }} />
@@ -370,7 +372,7 @@ const AfricaStory = () => {
                            
                         </div>
                         <div>
-                        <p style={{  fontSize:"14px", fontWeight:"bold" }}>Here we look at adult literacy rate. We look at the Highest Adult Literacy Rate each country ever reached. </p>
+                        <p style={{ fontWeight:"bold" }}>Here we look at adult literacy rate. We look at the Highest Adult Literacy Rate each country ever reached. </p>
                           <span><p>This accesses the number of people literate per 100 people</p></span>
                           <div style={{ display: 'flex', flexDirection:'column', alignItems:'start'}}>
                               <div>
@@ -393,9 +395,9 @@ const AfricaStory = () => {
                     
                     <div className="detail-columns">
                         <div className="detail-column">
-                           <p style={{  fontSize:"18px", fontWeight:"bold",  color:"#1d3557" }}>Now let's look at access to education based on gender</p>
+                           <p className='sub-header'>Now let's look at access to education based on gender</p>
                            <div>
-                                <p style={{  fontSize:"14px", fontWeight:"bold" }}>Age Range of Female Population with No Education, %</p>
+                                <p style={{ fontWeight:"bold" }}>Age Range of Female Population with No Education, %</p>
                                 <p>There are both generational and geographic disparities in women’s access to education across five of Africa’s least developed countries. In all countries, older women (ages 55–64) are significantly more likely to have received no formal education, while younger generations—especially those aged 15–24—show modest improvements. However, progress is uneven. Countries like Burundi and Congo demonstrate meaningful gains across generations, while Mozambique and the Central African Republic continue to show high exclusion rates across all age groups, indicating deeper structural barriers. Access to education for women is shaped not only by time, but also by national context and investment.</p>
                                 <div style={{ display: 'flex', flexDirection:'row', alignItems:'end'}}>
                                     <div style={{width: '50%'}}>
@@ -456,13 +458,27 @@ const AfricaStory = () => {
                   <div className="country-details">
                     <div className="detail-columns">
                       <div className="detail-column" style={{display: 'flex', flexDirection:'column', alignItems:'center'}}>
-                         <CallToActionCard />
+                         <ConnectionCycleCard />
+                         <button class="back-button">
+                          Take Action Now
+                        </button>
                          <div style={{cursor:'pointer', margin:'auto', color:'#457b9d', display:'flex', alignItems: 'center'}}>
                            <p  onClick={() => { learnMoreAbout(); learnMoreAbout();}}>Learn more about the countries</p>
                          </div>
                       </div>
                     </div>
                   </div>
+
+                  {/* <div className="country-details">
+                    <div className="detail-columns">
+                      <div className="detail-column" style={{display: 'flex', flexDirection:'column', alignItems:'center'}}>
+                         <CallToActionCard />
+                         <div style={{cursor:'pointer', margin:'auto', color:'#457b9d', display:'flex', alignItems: 'center'}}>
+                           <p  onClick={() => { learnMoreAbout(); learnMoreAbout();}}>Learn more about the countries</p>
+                         </div>
+                      </div>
+                    </div>
+                  </div> */}
 
                
                   

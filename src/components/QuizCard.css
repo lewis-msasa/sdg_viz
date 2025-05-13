@@ -24,7 +24,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 2rem;
     margin: 1rem;
   }
   
@@ -87,7 +87,7 @@
         border-radius: 10px;
         padding: 2rem;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        max-width: 600px;
+        max-width: 60%;
         margin: 0 auto;
     }
     .quiz-progress {
@@ -111,14 +111,14 @@
     }
     
     .question {
-      font-size: 1.4rem;
+      font-size: 2rem;
       margin-bottom: 1.5rem;
       color: #333;
     }
     
     .category {
       color: #457b9d;
-      font-size: 0.9rem;
+      font-size: 1.4rem;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -139,7 +139,7 @@
       cursor: pointer;
       transition: all 0.2s;
       text-align: left;
-      font-size: 1rem;
+      font-size: 2rem;
     }
     
     .option-button:hover {
@@ -296,7 +296,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 2rem;
   }
 
   .combined-quiz-button {
@@ -309,7 +309,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 2rem;
     transition: all 0.3s;
   }
   

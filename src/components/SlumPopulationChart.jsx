@@ -39,7 +39,7 @@ const SlumPopulationChart = ({ data }) => {
     const plot = Plot.plot({
       axis: null,
       label: null,
-      height: 260,
+      height: 460,
       marginTop: 30,
       marginBottom: 70,
       //title: "Population living in Slums",
@@ -66,7 +66,7 @@ const SlumPopulationChart = ({ data }) => {
           frameAnchor: "bottom",
           lineAnchor: "top",
           dy: 6,
-          fontSize: 18,
+          fontSize: 24,
           fontWeight: "regular",
           fill: "grey",
         }),

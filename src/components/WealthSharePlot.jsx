@@ -103,7 +103,7 @@ const WealthSharePlot = ({ povertyData }) => {
           x: "Year",
           y: "Value",
           fill: "Country Name",
-          r: 4,
+          r: 6,
           tip: true,
           title: (d) => {
             const map = {
@@ -116,7 +116,17 @@ const WealthSharePlot = ({ povertyData }) => {
             return `${d["Country Name"]}, ${d.Year}\n${label}: ${d.Value}%`;
           }
         })
-      ]
+      ],
+      x: {
+        label: "Year",
+        labelFont: "32px",
+        tickFont: "12px"
+      },
+      y: {
+        label: "Value (%)",
+        labelFont: "24px",
+        tickFont: "12px"
+      }
     });
 
     plotRef.current.appendChild(plot);
