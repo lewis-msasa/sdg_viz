@@ -277,7 +277,7 @@ const AfricaStory = () => {
                   <div className="detail-columns" style={{marginTop:'12px'}}>
                    
                     <div className="detail-column" style={{display:'flex', flexDirection: "column"}}>
-                        <p className='sub-header'>But what do these numbers and disturbances mean for people - on an individual level? </p>
+                        <p className='sub-header'>How does this fight against poverty show on an individual citizen level? </p>
                         <div>
                         <PovertyIconography />
                         </div>
