@@ -381,7 +381,7 @@ const AfricaStory = () => {
                         <p style={{ fontWeight:"bold" }}>Here we look at adult literacy rate. We look at the Highest Adult Literacy Rate each country ever reached. </p>
                           <span><p>This accesses the number of people literate per 100 people</p></span>
                           <div style={{ display: 'flex', flexDirection:'column', alignItems:'start'}}>
-                              <div style={{display: 'flex',flexDirection:'row', gap:'6px'}}>
+                              <div style={{display: 'flex',flexDirection:'row', gap:'30px'}}>
                                 <div style={{width:'55%'}}>
                                   <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_17463060491760/MaxLiteracyDashboard"}
                                   options={{
@@ -392,7 +392,7 @@ const AfricaStory = () => {
                                   }} />
                                  </div>
                                  <div style={{width:'40%'}}>
-                                    <p>DRC has drastically improved. Such an increase can be attributed to the relatively recent free primary education policy introduced in September 2019. This initiative led to a significant increase in enrollment, with over 3 million additional children attending primary school. </p>
+                                    <p>South Sudan has the lowest rate ever achieved just as it had the lowest on highest SDG4 index ever achieved. However, DRC has drastically improved. Such an increase can be attributed to the relatively recent free primary education policy introduced in September 2019. This initiative led to a significant increase in enrollment, with over 3 million additional children attending primary school. </p>
                                  </div>
                               </div>
                              
