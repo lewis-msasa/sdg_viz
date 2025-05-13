@@ -47,7 +47,7 @@ const data = povertyData.map(country => {
   export const CountryPovertyRateCard = ({rate, message, isUp}) => {
     return (
       <div style={styles.rateCard}>
-        <div style={{fontSize: '0.9rem', color: '#d2cfcf' }}>
+        <div style={{ color: '#d2cfcf' }}>
           Poverty Rate
         </div>
   
@@ -59,10 +59,10 @@ const data = povertyData.map(country => {
           
           { isUp ? <FaArrowUpRightDots size={200} style={{ color: "#f1c232"}} /> : <FaArrowDown size={200} style={{ color: "#f1c232"}} /> }
           <div>
-            <div style={{ fontSize: '6rem', fontWeight: 'bold', color: '#f1c232' }}>
+            <div style={{ fontSize: '4rem', fontWeight: 'bold', color: '#f1c232' }}>
               {rate}%
             </div>
-            <p style={{ fontSize: '1rem', lineHeight: '1.4', marginTop: '0.5rem', color: '#fff' }}>
+            <p style={{  lineHeight: '1.4', marginTop: '0.5rem', color: '#fff' }}>
              {message}
             </p>
           </div>

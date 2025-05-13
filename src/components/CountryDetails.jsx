@@ -9,11 +9,11 @@ import { CountryPovertyRateCard } from './PovertyCard';
 import { CountryEducationCard } from './EducationCard';
 import {CountryAnimatedGDPChart} from './AllCountriesAnimatedGDP';
 import CountryRadarFemaleEducationChart from "./CountryRadarFemaleEducationChart";
-import CountryRadarSlumChart from "./CountryRadarSlumChart";
+import { CountryAnimatedGDPLineChart } from './AllCountriesAnimatedGDPLineChart';
 import "./CountryDetails.css"
 
 const CountryDetails = ({ country, countryName }) => {
-  const options = useMemo(() => ({ toolbar: 'bottom' }), []);
+  const options = useMemo(() => ({ toolbar: 'bottom', height: '800px', width: '100%' }), []);
   const details = countryInfo[country] || {};
   const countryDashboards = GdpDashboards[country] || {};
 
@@ -73,18 +73,26 @@ const CountryDetails = ({ country, countryName }) => {
         <h3>Economic Information</h3>
         <TableauEmbed vizUrl={countryDashboards.vsOthers}
                             options={options} />
-        </div>
-
-        <div className="detail-column">
-           <h3>Economic Information</h3>
+       
            <div>
-             <p>Number of people per every 10 living below $2.15 per day(poverty line)</p>
+             <p className='sub-header'>Number of people per every 10 living below $2.15 per day(with every deep-blue icon representing 10%)</p>
              <div style={{display: 'flex', flexDirection: 'row', gap:"4rem", alignItems:'center'}}>
-              <PovertyCard  key={Country} country={Country} povertyRatio={values[0]["Poverty headcount ratio at $2.15 a day"]}   />
-              <CountryPovertyRateCard rate={povertyRate} message={reason} isUp={isUp}/>
+              <div style={{width:'50%'}}>
+                 <PovertyCard  key={Country} country={Country} povertyRatio={values[0]["Poverty headcount ratio at $2.15 a day"]}   />
+              </div>
+              <div style={{width: '50%'}}>
+                  <CountryPovertyRateCard rate={povertyRate} message={reason} isUp={isUp}/>
+              </div>
              </div>
            </div>
-            <CountryAnimatedGDPChart country={countryName} />
+           <div>
+             <p className='sub-header'>Gross Domestic Product</p>
+             <p>
+               GDP represents a key indicator of a country’s overall economic health. It reflects the financial value of all goods and services produced within its borders.
+             </p>
+             <CountryAnimatedGDPLineChart countryName={countryName} />
+           </div>
+            
         </div>
       </div>
       </div>

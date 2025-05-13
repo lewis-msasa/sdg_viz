@@ -205,18 +205,18 @@ export const CountryAnimatedGDPChart = ({country}) => {
              opacity: 0.8
           }
           .axis text {
-            font-size: 12px;
+            font-size: 1.2rem;
           }
           .axis-label {
-            font-size: 14px;
+            font-size: 2rem;
             font-weight: bold;
           }
           .title {
-            font-size: 14px;
+            font-size: 2rem;
             font-weight: normal;
           }
           .year-display {
-            font-size: 14px;
+            font-size: 2rem;
             font-weight: bold;
             text-anchor: middle;
           }
@@ -230,6 +230,7 @@ const AllCountriesAnimatedGDPChart = () => {
   const [currentYear, setCurrentYear] = useState(2010);
   const [isPlaying, setIsPlaying] = useState(false);
   const [everPlayed, setEverPlayed] = useState(false);
+  const containerRef = useRef(null);
   //const [data, setData] = useState({});
   const intervalRef = useRef();
 
@@ -237,7 +238,7 @@ const AllCountriesAnimatedGDPChart = () => {
 
   // Set up dimensions
   const margin = {top: 50, right: 30, bottom: 80, left: 60};
-  const width = 800 - margin.left - margin.right;
+  const width = containerRef.current ? 0.8 * containerRef.current.clientWidth - margin.left - margin.right : 900 - margin.left - margin.right;
   const height = 500 - margin.top - margin.bottom;
 
   // Animation controls
@@ -372,11 +373,27 @@ const AllCountriesAnimatedGDPChart = () => {
       .on("mouseout", function() {
         d3.select("#tooltip").style("opacity", 0);
       });
+      svg.selectAll(".label")
+          .data(data)
+          .enter()
+          .append("text")
+          .attr("class", "bar-label")
+          .attr("x", d => x(d.shortName) + x.bandwidth() / 2)
+          .attr("y", d => {
+            const yearData = d.values.find(v => v.year === currentYear);
+            return y(yearData ? yearData.value : 0) - 5; 
+          })
+          .attr("text-anchor", "middle")
+          .text(d => {
+            const yearData = d.values.find(v => v.year === currentYear);
+            return yearData ? yearData.value.toFixed(2) : "";
+          });
 
-  }, [currentYear]);
+
+  }, [currentYear,width]);
 
   return (
-    <div style={{ margin: '20px' }}>
+    <div style={{ margin: '20px' }} ref={containerRef}>
       <svg ref={svgRef}></svg>
       <div id="controls" style={{ marginTop: '20px', textAlign: 'center' }}>
         <button 
@@ -387,7 +404,7 @@ const AllCountriesAnimatedGDPChart = () => {
         </button>
         {everPlayed && (<button 
           onClick={resetAnimation} 
-          style={{ padding: '8px 16px', margin: '0 5px', cursor: 'pointer' }}
+          class="back-button"
         >
           Reset
         </button>)}
@@ -422,6 +439,11 @@ const AllCountriesAnimatedGDPChart = () => {
            fill: #1d3557;
            opacity: 0.8
         }
+        .bar-label {
+            font-size: 12px;
+            fill: black;
+            pointer-events: none; 
+          }
         .axis text {
           font-size: 12px;
         }

@@ -10,9 +10,9 @@ const SdgCard = ({ type, value, max = 166 }) => {
           const svg = d3.select(svgRef.current);
           svg.selectAll("*").remove();
 
-          const width = 120;
-          const height = 120;
-          const radius = 50;
+          const width = 160;
+          const height = 160;
+          const radius = 80;
 
           const g = svg
             .attr("width", width)
@@ -46,8 +46,8 @@ const SdgCard = ({ type, value, max = 166 }) => {
           g.append("text")
             .attr("text-anchor", "middle")
             .attr("dy", "0.35em")
-            .style("font-size", "20px")
-            .style("fill", "#1e3a8a")
+            .style("font-size", "2rem")
+            .style("fill", "#1d3557")
             .text(value.toFixed(2));
         }
       }, [type, value]);

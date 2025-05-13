@@ -16,7 +16,7 @@
     background: white;
     padding: 2rem;
     border-radius: 8px;
-    max-width: 400px;
+    max-width: 600px;
     width: 90%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     text-align: center;
@@ -37,6 +37,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
+    font-size: 2rem;
   }
   
   .cancel-button:hover {
@@ -51,6 +52,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
+    font-size: 2rem;;
   }
   
   .confirm-button:hover {
@@ -67,6 +69,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
+    font-size: 2rem;
   }
   
   .skip-button:hover {

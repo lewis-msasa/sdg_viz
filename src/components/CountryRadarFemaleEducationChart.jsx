@@ -26,7 +26,11 @@ const CountryRadarFemaleEducationChart = ({ data, selectedCountry, selectedCount
         !["15+", "25+"].some(substr => d["Indicator Name"].includes(substr)) &&
         (d["Country Name"] === selectedCountry || d["Country Name"] === selectedCountryName)
     );
-    if (dataFiltered.length < 1) return <></>;
+
+    console.log(dataFiltered.length)
+    if (dataFiltered.length < 1) return () => {};
+
+    
   
     const points = dataFiltered.map(d => ({
       key: d["Indicator Name"],
@@ -150,6 +154,8 @@ const CountryRadarFemaleEducationChart = ({ data, selectedCountry, selectedCount
       }
     `;
     container.appendChild(style);
+
+    return () => plot.remove();
    
   }, [data, selectedCountry]);
 

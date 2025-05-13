@@ -33,11 +33,15 @@ const AfricaStory = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [showAllQuiz, setAllQuiz] = useState(false);
   // const [showAllEconQuiz, setAllEconQuiz] = useState(false);
-  const { isVisible: showAllEconQuiz, setIsVisible : setAllEconQuiz, elementRef : econQuizRef} = useVisibilityOnScroll();
-  const { isVisible: showAllEduQuiz, setIsVisible : setAllEduQuiz, elementRef : eduQuizRef} = useVisibilityOnScroll();
-  const { isVisible: showMap, setIsVisible : setShowMap, elementRef : showMapRef} = useVisibilityOnScroll();
-  const [quizMode, setQuizMode] = useState('country'); 
+  const { isVisible: showAllEconQuiz, setIsVisible : setAllEconQuiz, elementRef : econQuizRef} = useVisibilityOnScroll(false);
+  const { isVisible: showAllEduQuiz, setIsVisible : setAllEduQuiz, elementRef : eduQuizRef} = useVisibilityOnScroll(false);
+  //const { isVisible: showMap, setIsVisible : setShowMap, elementRef : showMapRef} = useVisibilityOnScroll(true);
+  const [quizMode, setQuizMode] = useState('country');
   const [showQuiz, setShowQuiz] = useState(false);
+
+  const [showMap, setShowMap] = useState(false);
+  const  showMapRef = useRef(null);
+
   const [quizHistory, setQuizHistory] = useState([]);
   const [allQuizHistory, setAllQuizHistory] = useState([]);
 
@@ -459,7 +463,7 @@ const AfricaStory = () => {
                     <div className="detail-columns">
                       <div className="detail-column" style={{display: 'flex', flexDirection:'column', alignItems:'center'}}>
                          <ConnectionCycleCard />
-                         <button class="back-button">
+                         <button className="back-button">
                           Take Action Now
                         </button>
                          <div style={{cursor:'pointer', margin:'auto', color:'#457b9d', display:'flex', alignItems: 'center'}}>

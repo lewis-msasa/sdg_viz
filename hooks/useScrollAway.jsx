@@ -34,7 +34,7 @@ export const useScrollAway = (options = {}) => {
   return [targetRef, isComponentVisible];
 };
 
-export const useVisibilityOnScroll = () => {
+export const useVisibilityOnScroll = ({toggle}) => {
     const [isVisible, setIsVisible] = useState(false);
     const elementRef = useRef(null);
   
@@ -43,7 +43,7 @@ export const useVisibilityOnScroll = () => {
         const rect = elementRef.current.getBoundingClientRect();
         const isOutOfView = rect.bottom < 0 || rect.top > window.innerHeight;
         
-        if(isOutOfView){
+        if(isOutOfView || toggle){
             setIsVisible(!isOutOfView);
         }
        
