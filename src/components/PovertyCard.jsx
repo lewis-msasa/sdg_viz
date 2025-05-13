@@ -96,7 +96,8 @@ const PovertyIconography = () => {
   return (
     <div style={styles.container}>
         <div style={styles.card}>
-            <p style={{fontWeight:"bold"}}>Number of people per every 10 living below $2.15 per day(poverty line)</p>
+            <p style={{fontWeight:"bold"}}>Number of people per every 10 living below $2.15 per day(with every deep-blue icon representing 10%)</p>
+            {/* <p>Every deep-blue icon representing 10%</p> */}
             <div style={{ display:'flex', flexDirection:'row'}}>
                   <div style={{ display:'flex', flexDirection:'column', width: '50%'}}>
                       {data.map((data) => {
