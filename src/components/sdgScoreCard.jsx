@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { sdgOverviewData } from '../data/countryData';
 import "./ScoreCard.css"
  
-const SdgCard = ({ type, value, max = 166 }) => {
+const SdgCard = ({ type, value, max = 166, title = "SDG Index Score" }) => {
       const svgRef = useRef(null);
 
         useEffect(() => {
@@ -56,12 +56,12 @@ const SdgCard = ({ type, value, max = 166 }) => {
         <div className="sdg-card">
           {type === 'rank' ? (
             <>
-              <h3>SDG Index Rank</h3>
-              <p>{value} / {max}</p>
+              <h3>{title}</h3>
+              <p>{ value > 0 ? `${value}/${max}` : "N/A"}</p>
             </>
           ) : (
             <>
-              <h3>SDG Index Score</h3>
+              <h3>{title}</h3>
               <svg ref={svgRef}></svg>
             </>
           )}
@@ -69,12 +69,19 @@ const SdgCard = ({ type, value, max = 166 }) => {
       );
     };
 
-export const CountrySdgOverview = ({ countryData }) => {
-     
+export const CountrySdgOverview = ({ countryData, sdgIndexScores}) => {
+      console.log(sdgIndexScores)
+      const latestEntry = sdgIndexScores.reduce((latest, current) => {
+        return (current.year > (latest?.year ?? -Infinity)) ? current : latest;
+      }, null);
+      console.log(latestEntry)
       return (
+      
         <div className="country-overview">
-          <SdgCard type="rank" value={countryData.rank} />
-          <SdgCard type="score" value={countryData.score} />
+          <SdgCard type="rank" title='SDG Index Rank' value={countryData.rank} />
+          <SdgCard type="score" value={latestEntry['sdg_index_score']} />
+          <SdgCard type="score" title='SDG1 Index Score' value={latestEntry['goal_1_score']} />
+          <SdgCard type="score" title='SDG4 Index Score' value={latestEntry['goal_4_score']} />
           <div className="sdg-card">
             <>
               <h3>Population</h3>

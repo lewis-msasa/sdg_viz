@@ -1,6 +1,6 @@
 
 import React, { useMemo } from 'react';
-import { countryInfo, sdgOverviewData, allFemaleEducationData, slumData } from '../data/countryData';
+import { countryInfo, sdgOverviewData, allFemaleEducationData, slumData, SDGIndexScores} from '../data/countryData';
 import { CountrySdgOverview } from './sdgScoreCard';
 import TableauEmbed from './TableauEmbed';
 import { GdpDashboards, povertyData, educationData } from '../data/countryData';
@@ -42,20 +42,34 @@ const CountryDetails = ({ country, countryName }) => {
     <div className="country-details">
       <div className="detail-columns">
         <div className="detail-column">
-          <h3>Basic Information</h3>
-          <p><strong>Capital:</strong> {details.capital || 'N/A'}</p>
-          <p><strong>Population:</strong> {details.population ? details.population.toLocaleString() : 'N/A'}</p>
-          <p><strong>Official Language:</strong> {details.language || 'N/A'}</p>
-          <p><strong>Climate:</strong> {details.climate || 'N/A'}</p>
-          <h3>About {country}</h3>
-        <p>{details.description || 'No additional information available.'}</p>
-        </div>
-        
-        <div className="detail-column">
-           <h3>SDG Overview Information</h3>
+          <div>
+
+            <h3>Basic Information</h3>
+            <div style={{display:'flex', flexDirection:'row', gap:'2rem'}}>
+                <p><strong>Capital:</strong> {details.capital || 'N/A'}</p>
+                <p><strong>Official Language:</strong> {details.language || 'N/A'}</p>
+            </div>
+            <div style={{display:'flex', flexDirection:'row', gap:'2rem'}}>
+                
+                <p><strong>Climate:</strong> {details.climate || 'N/A'}</p>
+
+            </div>
+           
+          
+            <h5>About {countryName}</h5>
+            <p>{details.description || 'No additional information available.'}</p>
+          
+
+          </div>
+          <div>
+
+          <h3>SDG Overview Information</h3>
             <p>The SDG Index Rank refers to a country's position in the Sustainable Development Goals (SDG) Index, which assesses how well countries are progressing toward achieving the 17 SDGs established by the United Nations.
               The SDG Index score ranges from 0 to 100, where 100 signifies full achievement of all SDGs.</p>
-            <CountrySdgOverview  countryData={sdgOverviewData[country]} />
+            <CountrySdgOverview  countryData={sdgOverviewData[country]} sdgIndexScores={SDGIndexScores.filter(entry => entry.country === countryName)} />
+
+          </div>
+          
         </div>
       </div>
 
@@ -71,8 +85,11 @@ const CountryDetails = ({ country, countryName }) => {
       <div className="detail-columns">
         <div className="detail-column">
         <h3>Economic Information</h3>
+        <div style={{width:'100%'}}>
         <TableauEmbed vizUrl={countryDashboards.vsOthers}
                             options={options} />
+        </div>
+        
        
            <div>
              <p className='sub-header'>Number of people per every 10 living below $2.15 per day(with every deep-blue icon representing 10%)</p>
