@@ -79,7 +79,7 @@ export const CountrySdgOverview = ({ countryData, sdgIndexScores}) => {
       
         <div className="country-overview">
           <SdgCard type="rank" title='SDG Index Rank' value={countryData.rank} />
-          <SdgCard type="score" value={latestEntry['sdg_index_score']} />
+          <SdgCard type="score" title="Overall SDG Index Score" value={latestEntry['sdg_index_score']} />
           <SdgCard type="score" title='SDG1 Index Score' value={latestEntry['goal_1_score']} />
           <SdgCard type="score" title='SDG4 Index Score' value={latestEntry['goal_4_score']} />
           <div className="sdg-card">
