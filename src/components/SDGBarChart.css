@@ -1,0 +1,33 @@
+.chart-container {
+ 
+    padding: 24px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .chart-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .chart-description {
+   
+    margin-bottom: 16px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .chart {
+    width: 100%;
+  }
+
+  .chart-fact {
+  
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+ 

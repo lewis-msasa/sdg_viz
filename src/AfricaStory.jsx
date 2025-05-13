@@ -23,6 +23,7 @@ import useVisibilityOnScroll from '../hooks/useScrollAway';
 import CallToActionCard from './components/CallToActionCard';
 import './AfricaStory.css';
 import ConnectionCycleCard from './components/ConnectionCycleCard';
+import SDG4BarChart from './components/SDG4BarChart';
 
 const AfricaStory = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -356,21 +357,22 @@ const AfricaStory = () => {
                               <span><p>The index assesses the effectiveness, inclusivity, and equity of education systems. We look at the maximum education quality index a country has ever scored</p></span>
                               <div style={{ display: 'flex', flexDirection:'column', alignItems:'start'}}>
                                  <div style={{width: '100%' }}>
-                                 <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_max/MaxQualityEducationDashboard"}
+                                 {/* <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_max/MaxQualityEducationDashboard"}
                                     options={{
                                       width: '100%',
                                       height: '800px',
                                       hideTabs: true,
                                       hideToolbar: true,
-                                    }} />
+                                    }} /> */}
+                                    <SDG4BarChart />
                                  </div>
                                  <div style={{width:'100%'}}>
-                                     <p>
+                                     {/* <p>
                                      Mozambique’s and Burundi’s results indicate stronger progress in building an inclusive education system—though still far from global targets of ~80%. South Sudan lags furthest behind with a score below 20, signaling serious structural gaps in educational infrastructure, access, and quality. 
                                       - Success of Mozambique can be attributed to the 2018 revision of the National Education System Law extending compulsory education from seven to nine years, aiming at reducing dropout rates and enhancing literacy.
                                       - Success of Burundi can be attributed to the introduction of free primary education in 2005 and introduction of a nine-year basic education cycle in 2010, combining primary and lower secondary education to streamline the education system and improve retention rates.
 
-                                    </p>
+                                    </p> */}
                                  </div>
                               </div>
                            
@@ -379,7 +381,8 @@ const AfricaStory = () => {
                         <p style={{ fontWeight:"bold" }}>Here we look at adult literacy rate. We look at the Highest Adult Literacy Rate each country ever reached. </p>
                           <span><p>This accesses the number of people literate per 100 people</p></span>
                           <div style={{ display: 'flex', flexDirection:'column', alignItems:'start'}}>
-                              <div>
+                              <div style={{display: 'flex',flexDirection:'row', gap:'6px'}}>
+                                <div style={{width:'55%'}}>
                                   <TableauEmbed vizUrl={"https://public.tableau.com/views/sdg4_17463060491760/MaxLiteracyDashboard"}
                                   options={{
                                     width: '100%',
@@ -387,10 +390,12 @@ const AfricaStory = () => {
                                     hideTabs: true,
                                     hideToolbar: true,
                                   }} />
+                                 </div>
+                                 <div style={{width:'40%'}}>
+                                    <p>DRC has drastically improved. Such an increase can be attributed to the relatively recent free primary education policy introduced in September 2019. This initiative led to a significant increase in enrollment, with over 3 million additional children attending primary school. </p>
+                                 </div>
                               </div>
-                              <div>
-                                  <p>DRC has drastically improved. Such an increase can be attributed to the relatively recent free primary education policy introduced in September 2019. This initiative led to a significant increase in enrollment, with over 3 million additional children attending primary school. </p>
-                              </div>
+                             
                           </div>
                            
                         </div>
@@ -463,9 +468,9 @@ const AfricaStory = () => {
                     <div className="detail-columns">
                       <div className="detail-column" style={{display: 'flex', flexDirection:'column', alignItems:'center'}}>
                          <ConnectionCycleCard />
-                         <button className="back-button">
+                         {/* <button className="back-button">
                           Take Action Now
-                        </button>
+                        </button> */}
                          <div style={{cursor:'pointer', margin:'auto', color:'#457b9d', display:'flex', alignItems: 'center'}}>
                            <p  onClick={() => { learnMoreAbout(); learnMoreAbout();}}>Learn more about the countries</p>
                          </div>
