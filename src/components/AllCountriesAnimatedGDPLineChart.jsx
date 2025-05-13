@@ -159,7 +159,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
       return gRef.current.append("path")
         .datum(countryData.values)
         .attr("class", "line")
-        .attr("stroke", color(countryData.country))
+        .attr("stroke", color(countryData.shortName))
         .attr("stroke-width", 2)
         .attr("fill", "none")
         .attr("d", line(countryData.values.filter(d => d.year <= currentYear)));
@@ -198,7 +198,7 @@ const AllCountriesAnimatedGDPLineChart = () => {
         .attr("y", d => yScaleRef.current(d.value) - 10)
         .attr("text-anchor", "left")
         .attr("font-size", "16px")
-        .attr("fill", d => color(countryData.country))
+        .attr("fill", d => color(countryData.shortName))
         .text(d => `$${d.value.toFixed(1)}B`)
         .attr("opacity", d => d.year === currentYear  && (d.year == lastYear || d.year == firstYear )? 1 : 0);
      
