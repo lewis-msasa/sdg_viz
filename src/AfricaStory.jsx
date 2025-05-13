@@ -409,7 +409,7 @@ const AfricaStory = () => {
                                 <p style={{ fontWeight:"bold" }}>Age Range of Female Population with No Education, %</p>
                                 <p>There are both generational and geographic disparities in women’s access to education across five of Africa’s least developed countries. In all countries, older women (ages 55–64) are significantly more likely to have received no formal education, while younger generations—especially those aged 15–24—show modest improvements. However, progress is uneven. Countries like Burundi and Congo demonstrate meaningful gains across generations, while Mozambique and the Central African Republic continue to show high exclusion rates across all age groups, indicating deeper structural barriers. Access to education for women is shaped not only by time, but also by national context and investment.</p>
                                 <div style={{ display: 'flex', flexDirection:'row', alignItems:'end'}}>
-                                    <div style={{width: '50%'}}>
+                                    <div style={{width: '55%'}}>
                                         <FemaleEducationRadarChart data={femaleEducationData} />
                                     </div>
                                     <div style={{ width:'35%', background:'#1d3557', color:'#fff', padding:'2rem', borderRadius:'10px', height:'auto'}}>

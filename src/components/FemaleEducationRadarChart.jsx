@@ -57,7 +57,7 @@ const FemaleEducationRadarChart = ({ data }) => {
       .range([180, -145]);
 
     const plot = Plot.plot({
-      width: 450,
+      width: 650,
       //title: "Age Range of Female Population with No Education, %",
       subtitle:
         "2010 Census. South Sudan is not reflected due to the lack of data",
